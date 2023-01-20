@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Product_Page</title>
+</head>
+<style>
+    #wrapper{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap:20px;
+        width: 50%;
+        align-items: center;
+        margin:auto;
+    }
+    #wrapper>div{
+        border:1px solid black;
+    }
+</style>
+<body>
+    <div id="wrapper">
+        <div id="men">
+            <img src="" alt="">
+            <p>Men</p>
+        </div>
+        <div id="women">
+            <img src="" alt="">
+            <p>Women</p>
+        </div >
+        <div id="kids">  <img src="" alt="">
+            <p>Kids</p></div>
+        <div id="girls">  <img src="" alt="">
+            <p>Girls</p></div>
+    </div>
+</body>
+</html>
+<script>
+    let men=document.getElementById("men");
+    men.addEventListener("click",()=>{
+        window.location="men.admin.html"
+    })
+    let Women=document.getElementById("women");
+   Women.addEventListener("click",()=>{
+        window.location="women.admin.html"
+    })
+    let kid=document.getElementById("kids");
+   kid.addEventListener("click",()=>{
+        window.location="women.admin.html"
+    })
+    let girls=document.getElementById("girls");
+    girls.addEventListener("click",()=>{
+        window.location="girls.admin.html"
+    })
+</script>

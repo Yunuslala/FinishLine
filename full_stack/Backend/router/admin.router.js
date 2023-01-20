@@ -2,14 +2,17 @@ const mongoose=require("mongoose");
 const express=require("express");
 const admin=express.Router();
 const {ProductMenMOdel}=require("../models/product.model.men");
-const {ProductWomenMOdel}=require("../models/product.model.women")
-const {men,Women}=require("../json")
+const {ProductWomenMOdel}=require("../models/product.model.women");
+const {adminAuthentication}=require("../middleware/admin.authentication")
+const {men,Women}=require("../json");
+const cors=require('cors')
+admin.use(cors())
+admin.use(adminAuthentication);
 
 admin.post("/post/men",async(req,res)=>{
     try {
         let data=men;
         let postdata=await ProductMenMOdel.insertMany(data);
-        // await postdata.save();
         res.send({"msg":"your all men data has been posted"})
     } catch (error) {
         console.log(error);
@@ -41,7 +44,7 @@ admin.post("/post/add/women",async(req,res)=>{
 admin.post("/post/add/Men",async(req,res)=>{
     try {
         let data=req.body;
-        let postdata= ProductWomenMOdel(data);
+        let postdata= ProductMenMOdel(data);
         await postdata.save();
         res.send({"msg":"your  men data has been posted"})
     } catch (error) {
@@ -60,6 +63,25 @@ admin.post("/post/add/kids",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
+admin.get("/get/women",async(req,res)=>{
+    try {
+
+       let data=await ProductWomenMOdel.find();
+       res.send(data) 
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+admin.get("/get/men/",async(req,res)=>{
+    try {
+       let data=await ProductMenMOdel.find();
+       res.send(data) 
+    } catch (error){
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
 admin.post("/post/add/girls",async(req,res)=>{
     try {
         let data=req.body;
@@ -71,6 +93,43 @@ admin.post("/post/add/girls",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
+admin.post("/men/sort",async(req,res)=>{
+    try {
+        let data=await ProductMenMOdel.find(req.body);
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":error})
+    }
+})
+admin.post("/women/sort",async(req,res)=>{
+    try {
+        let data=await ProductWomenMOdel.find(req.body);
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":error})
+    }
+})
+admin.post("/kids/sort",async(req,res)=>{
+    try {
+        let data=await ProductMenMOdel.find(req.body);
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":error})
+    }
+})
+admin.post("/girls/sort",async(req,res)=>{
+    try {
+        let data=await ProductMenMOdel.find(req.body);
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":error})
+    }
+})
+//delete
 admin.delete("/delete/women/:id",async(req,res)=>{
     try {
         let id=req.params.id;
@@ -84,8 +143,9 @@ admin.delete("/delete/women/:id",async(req,res)=>{
 admin.delete("/delete/men/:id",async(req,res)=>{
     try {
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id});
-        res.send({"msg":"your  data has been deleted"})
+       await ProductMenMOdel.findByIdAndDelete({_id:id});
+       let data=await ProductMenMOdel.find()
+        res.send({"msg":"your  data has been deleted",data})
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})
@@ -111,22 +171,39 @@ admin.delete("/delete/girls/:id",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
+
+//patch
 admin.patch("/patch/girls/:id",async(req,res)=>{
     try {
-        let data=req.body;
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id},data);
+        let{price,image,type,Brand,des,Rating,category,userid}=req.body;
+        let dataof={price,image,type,Brand,des,category};
+        let data={}
+        for(let key in dataof){
+            if(dataof[key]!=""){
+                data[key]=dataof[key]
+            }
+        }
+        await ProductWomenMOdel.findByIdAndUpdate({_id:id},data);
         res.send({"msg":"your  data has been deleted"})
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})
     }
 });
-admin.patch("/patch/boys/:id",async(req,res)=>{
+admin.patch("/patch/kids/:id",async(req,res)=>{
     try {
-        let data=req.body;
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id},data);
+        let{price,image,type,Brand,des,Rating,category,userid}=req.body;
+        let dataof={price,image,type,Brand,des,category};
+        let data={}
+        for(let key in dataof){
+            if(dataof[key]!=""){
+                data[key]=dataof[key]
+            }
+        }
+        let patchdata=await ProductWomenMOdel.findByIdAndUpdate({_id:id},data);
+        // console.log(patchdata);
         res.send({"msg":"your  data has been deleted"})
     } catch (error) {
         console.log(error);
@@ -135,21 +212,38 @@ admin.patch("/patch/boys/:id",async(req,res)=>{
 });
 admin.patch("/patch/men/:id",async(req,res)=>{
     try {
-        let data=req.body;
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id},data);
-        res.send({"msg":"your  data has been deleted"})
+        let{price,image,type,Brand,des,Rating,category,userid}=req.body;
+        let dataof={price,image,type,Brand,des,category};
+        let data={}
+        for(let key in dataof){
+            if(dataof[key]!=""){
+                data[key]=dataof[key]
+            }
+        }
+
+       let patchdata= await ProductMenMOdel.findByIdAndUpdate({_id:id},data);
+        console.log(patchdata);
+       res.send({"msg":"your  data has been updated"})
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})
     }
 });
-admin.patch("/patch/Women/:id",async(req,res)=>{
+admin.patch("/patch/women/:id",async(req,res)=>{
     try {
-        let data=req.body;
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id},data);
-        res.send({"msg":"your  data has been deleted"})
+        let{price,image,type,Brand,des,Rating,category,userid}=req.body;
+        let dataof={price,image,type,Brand,des,category};
+        let data={}
+        for(let key in dataof){
+            if(dataof[key]!=""){
+                data[key]=dataof[key]
+            }
+        }
+        let patchdata=await ProductWomenMOdel.findByIdAndUpdate({_id:id},data);
+        console.log(patchdata);
+        res.send({"msg":"your  data has been Updated"})
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})

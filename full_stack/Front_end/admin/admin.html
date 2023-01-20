@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquos_Line | Admin</title>
+</head>
+<body>
+    <form action="">
+        <input type="email" placeholder="email" id="email">
+        <input type="password" placeholder="password" id="pass">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    let form=document.querySelector("form");
+    form.addEventListener("submit",(e)=>{
+       e.preventDefault()
+        let email=document.querySelector("#email").value;
+        let pass=document.querySelector("#pass").value;
+        if(email==""||pass==""){
+            alert("fill the form")
+        }else{
+            let obj={email,pass}
+            adminpanel(obj)
+        }
+    });
+    async function adminpanel(obj){
+        try {
+            let res=await fetch("http://localhost:4500/login",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(obj)
+            });
+            if(res.ok){
+                let ans=await res.json();
+                console.log(ans);
+                localStorage.setItem("token",ans.token)
+                alert(`welcom admin ${ans.msg}`);
+                window.location = "adminProductPage.html";
+            }
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+</script>

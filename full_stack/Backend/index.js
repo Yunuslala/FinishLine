@@ -1,11 +1,11 @@
 const express=require("express");
 const{connection}=require("./db");
-
 const {productRoute}=require("./router/produt.router");
-const {admin}=require("./router/admin.router")
+const {admin}=require("./router/admin.router");
+const {loginRoute}=require("./router/login.router")
 const app=express();
 app.use(express.json())
-
+app.use(loginRoute)
 app.use(productRoute);
 app.use(admin)
 

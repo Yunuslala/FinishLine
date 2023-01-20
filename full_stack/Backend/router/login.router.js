@@ -4,7 +4,8 @@ const bcrypt=require('bcrypt');
 var jwt = require('jsonwebtoken');
 const {loginModel}=require("../models/login.model");
 const {authentication}=require("../middleware/user.authentication")
-
+const cors=require('cors')
+loginRoute.use(cors())
 loginRoute.post("/signup",async(req,res)=>{
     try {
         let {fname,lname,Dob,email,pass}=req.body;
@@ -28,7 +29,7 @@ loginRoute.post("/signup",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-loginRoute.use(authentication)
+// loginRoute.use(authentication)
 loginRoute.post("/login",async(req,res)=>{
     try {
         let {email,pass}=req.body
@@ -37,7 +38,8 @@ loginRoute.post("/login",async(req,res)=>{
             bcrypt.compare(pass, registeredData[0].pass, function(err, result) {
                 if(result){
                     var dataid=registeredData[0]._id;
-                    var name=registeredData[0].name
+                    var name=registeredData[0].fname;
+                    console.log(name,dataid);
                     var token=jwt.sign({dataid,name},'aquos');
                     res.send({"msg":"You have been logged in",token})
                 }else{

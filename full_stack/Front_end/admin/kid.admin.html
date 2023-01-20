@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="admin.css">
+    <title>Alpha | Lyst | Admin-Database</title>
+  </head>
+  <body>
+    <div id="admin_desbord_navbar"> 
+            Admin - Database
+            <a href="./dummy.html"><img src="./alpha.jpg" width="200px" ></a>
+    </div>
+  <div id="admin_desbord">
+    <div id="slide">
+      <div id="admin">
+        <div>
+          <img src ="https://www.pngkit.com/png/detail/508-5084521_download-male-profile-icon-png-clipart-computer-icons.png">
+        </div>
+        <h2>Hello Admin</h2>
+        <div>
+           <button><a id="products_button" href="./admin.html">Products</a></button>
+           <button><a id="products_button" href="./customers_admin.html">Customers</a></button>
+        </div>
+      </div>
+      <div id="addform">
+        <h3>Add Product</h3>
+        <form>
+           <p>
+            <label>Product Name</label>
+            <input type="text" id="Product_name" required="required" placeholder="Product Name"/>
+           </p>
+           <p>
+            <label>Image</label>
+            <input type="text" id="image" required="required" placeholder="https://cdna.lystit.com/200/250/tr/photos/stefaniamode/4ca0bc5e/burberry-neutrals-Vintage-Check-Cotton-Sneakers.jpeg"/>
+           </p>
+           <p>
+            <label>Shoes-Catergories</label>
+            <select>
+                <option>Select-Item</option>
+                <option>BIG KIDS' SHOES (SIZES 3.5-7)</option>
+                <option>LITTLE KIDS' SHOES (SIZES 10.5-3)</option>
+                <option>TODDLER & INFANT SHOES (SIZES 0-10)</option>
+             </select>
+           </p>
+           <p>
+            <label>Clothes-Catergories</label>
+            <select>
+                <option>Select-Item</option>
+                <option>BIG KIDS' CLOTHING (SIZES XS-XL)</option>
+                <option>LITTLE KIDS' CLOTHING (SIZES 4-7)</option>
+                <option>TODDLER & INFANT CLOTHING (SIZES 0-4T)</option>
+             </select>
+           </p>
+           <p>
+            <label>Price</label>
+            <input type="number" id="price" required="required" placeholder="Product Price"/>
+           </p>
+           <p>
+            <label>Description</label>
+            <input type="text" id="description" required="required" placeholder="Woodhouse Clothing" />
+           </p>
+           <p>
+            <label>Brand</label>
+            <input type="text" id="brands" required="required" placeholder="Brand name"/>
+           </p>
+           <p>
+            <input id="submit" type="submit" value="Add" >
+           </p>
+        </form>
+      </div>
+      <!-- for pagination-warpper -->
+     
+    </div>
+    <div id="right-side">
+      <div id="functionality">
+        <h2 class = total >Total Products : 0</h2>
+        <input id="search" type="search" placeholder="search product">
+        <select>
+          <option>Select-Item</option>
+          <option>Shoes</option>
+          <option>Clothes</option>
+         </select>
+      </div>
+      <div id="parent-product-div">
+
+        </div>
+      <div class="pagination-wrapper" id="pagination-wrapper">Pagination</div>
+    </div>
+   </div>
+  </body>
+</html>
+<script>
+  async function admin(){
+        try {
+            let res=await fetch("http://localhost:4500/get/kid",{
+              method:"GET",
+              headers:{
+                "Content-Type":"application/json",
+                Authorization:localStorage.getItem("token")
+              }
+            });
+            console.log(res);
+            if(res){
+                let data=await res.json();
+                console.log(data);
+                display(data)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    admin()
+    let main = document.querySelector("#parent-product-div");
+function display(data){
+    main.innerHTML = "";
+   main.innerHTML= data.map((elem)=>{
+        return `
+        <div class="child-product-div">
+                    <div>
+                    <img src=${elem.image}>
+                    </div>
+                    <div>
+                    <div>
+                        <p><b>Price:</b> ₹ ${elem.price}</p>
+                        <p><b>Description:</b> ${elem.des}</p>
+                      </div>
+                    <div class="deleteButton">
+                        <button class="delete" data-id=${elem._id}>Delete</button>
+                        <button class="edit" data-id=${elem._id}>Update</button>
+                    </div>
+                  </div>
+              </div>
+        `
+    }).join(" ");
+
+    let delete_btn=document.querySelectorAll(".delete");
+    for(let btn of  delete_btn ){
+      btn.addEventListener("click",(e)=>{
+        let data_id=e.target.dataset.id;
+        delete_product(data_id);
+        console.log(data_id);
+      })
+    }
+    let update_btn=document.querySelectorAll(".edit");
+    for(let btn of  update_btn ){
+      btn.addEventListener("click",(e)=>{
+        let data_id=e.target.dataset.id;
+        localStorage.setItem("id",data_id);
+        window.location="men.update.html"
+        // update_product(data_id);
+        console.log(data_id);
+      })
+    }
+  }
+  async function delete_product(id){
+    try {
+      let res=await fetch(`http://localhost:4500/delete/kids/${id}`,{
+        method:"DELETE",
+        headers:{
+          "Content-Type":"application-json",
+          Authorization:localStorage.getItem("token")
+        }
+      });
+      if(res.ok){
+        let ans=await res.json();
+        console.log(ans);
+        alert(ans.msg);
+        display(ans.data)
+
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+</script>
