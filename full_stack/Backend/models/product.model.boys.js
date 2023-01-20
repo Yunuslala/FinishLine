@@ -10,8 +10,8 @@ const ProductSchema=mongoose.Schema({
   
 });
 
-const ProductWomenMOdel=mongoose.model("ProductofWomen",ProductSchema);
+const ProductboysMOdel=mongoose.model("Productofboy",ProductSchema);
 
 module.exports={
-    ProductWomenMOdel
+    ProductboysMOdel
 }
