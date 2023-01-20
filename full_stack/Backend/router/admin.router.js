@@ -2,9 +2,11 @@ const mongoose=require("mongoose");
 const express=require("express");
 const admin=express.Router();
 const {ProductMenMOdel}=require("../models/product.model.men");
+const {ProductgirlMOdel}=require("../models/product.model.girls")
+const {ProductboysMOdel}=require("../models/product.model.boys")
 const {ProductWomenMOdel}=require("../models/product.model.women");
 const {adminAuthentication}=require("../middleware/admin.authentication")
-const {men,Women}=require("../json");
+const {men,Women,girls,boys}=require("../json");
 const cors=require('cors')
 admin.use(cors())
 admin.use(adminAuthentication);
@@ -13,6 +15,26 @@ admin.post("/post/men",async(req,res)=>{
     try {
         let data=men;
         let postdata=await ProductMenMOdel.insertMany(data);
+        res.send({"msg":"your all men data has been posted"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+admin.post("/post/girl",async(req,res)=>{
+    try {
+        let data=girls;
+        let postdata=await ProductgirlMOdel.insertMany(data);
+        res.send({"msg":"your all men data has been posted"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+admin.post("/post/boys",async(req,res)=>{
+    try {
+        let data=boys;
+        let postdata=await ProductboysMOdel.insertMany(data);
         res.send({"msg":"your all men data has been posted"})
     } catch (error) {
         console.log(error);
@@ -52,10 +74,21 @@ admin.post("/post/add/Men",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-admin.post("/post/add/kids",async(req,res)=>{
+admin.post("/post/add/boys",async(req,res)=>{
     try {
         let data=req.body;
-        let postdata= ProductWomenMOdel(data);
+        let postdata= ProductboysMOdel(data);
+        await postdata.save();
+        res.send({"msg":"your  men data has been posted"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+admin.post("/post/add/girls",async(req,res)=>{
+    try {
+        let data=req.body;
+        let postdata= ProductgirlMOdel(data);
         await postdata.save();
         res.send({"msg":"your  kids data has been posted"})
     } catch (error) {
@@ -65,7 +98,6 @@ admin.post("/post/add/kids",async(req,res)=>{
 });
 admin.get("/get/women",async(req,res)=>{
     try {
-
        let data=await ProductWomenMOdel.find();
        res.send(data) 
     } catch (error) {
@@ -82,17 +114,25 @@ admin.get("/get/men/",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 })
-admin.post("/post/add/girls",async(req,res)=>{
+admin.get("/get/boys/",async(req,res)=>{
     try {
-        let data=req.body;
-        let postdata= ProductWomenMOdel(data);
-        await postdata.save();
-        res.send({"msg":"your  girls data has been posted"})
-    } catch (error) {
+       let data=await ProductboysMOdel.find();
+       res.send(data) 
+    } catch (error){
         console.log(error);
         res.send({"msg":"something went wrong"})
     }
-});
+})
+admin.get("/get/girls/",async(req,res)=>{
+    try {
+       let data=await ProductgirlMOdel.find();
+       res.send(data) 
+    } catch (error){
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+
 admin.post("/men/sort",async(req,res)=>{
     try {
         let data=await ProductMenMOdel.find(req.body);
@@ -111,9 +151,9 @@ admin.post("/women/sort",async(req,res)=>{
         res.send({"msg":error})
     }
 })
-admin.post("/kids/sort",async(req,res)=>{
+admin.post("/boys/sort",async(req,res)=>{
     try {
-        let data=await ProductMenMOdel.find(req.body);
+        let data=await  ProductboysMOdel.find(req.body);
         res.send(data)
     } catch (error) {
         console.log(error);
@@ -122,7 +162,7 @@ admin.post("/kids/sort",async(req,res)=>{
 })
 admin.post("/girls/sort",async(req,res)=>{
     try {
-        let data=await ProductMenMOdel.find(req.body);
+        let data=await ProductgirlMOdel.find(req.body);
         res.send(data)
     } catch (error) {
         console.log(error);
@@ -151,10 +191,10 @@ admin.delete("/delete/men/:id",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-admin.delete("/delete/kids/:id",async(req,res)=>{
+admin.delete("/delete/boys/:id",async(req,res)=>{
     try {
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id});
+        await  ProductboysMOdel.findByIdAndDelete({_id:id});
         res.send({"msg":"your  data has been deleted"})
     } catch (error) {
         console.log(error);
@@ -164,7 +204,7 @@ admin.delete("/delete/kids/:id",async(req,res)=>{
 admin.delete("/delete/girls/:id",async(req,res)=>{
     try {
         let id=req.params.id;
-        await ProductWomenMOdel.findByIdAndDelete({_id:id});
+        await ProductgirlMOdel.findByIdAndDelete({_id:id});
         res.send({"msg":"your  data has been deleted"})
     } catch (error) {
         console.log(error);

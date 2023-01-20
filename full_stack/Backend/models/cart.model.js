@@ -1,17 +1,17 @@
 const mongoose=require("mongoose");
-const ProductSchema=mongoose.Schema({
+let cartSchema=mongoose.Schema({
     image:String,
     type:String,
     Brand:String,
     price:String,
-    For:String,
+    for:String,
     des:String,
-    Rating:String,
+    _id:String,
+    userid:String,
     category:String
 });
-
-const ProductMenMOdel=mongoose.model("Productofmen",ProductSchema);
+let CartModel=mongoose.model("cartData",cartSchema);
 
 module.exports={
-    ProductMenMOdel
+    CartModel
 }

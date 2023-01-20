@@ -1,24 +1,28 @@
 const express=require("express");
 const {ProductMenMOdel}=require("../models/product.model.men");
-const {ProductWomenMOdel}=require("../models/product.model.women")
+const {ProductWomenMOdel}=require("../models/product.model.women");
+const {ProductgirlMOdel}=require("../models/product.model.girls")
+const {ProductboysMOdel}=require("../models/product.model.boys")
+const {CartModel}=require("../models/cart.model")
 const { authentication}=require("../middleware/user.authentication");
 const productRoute=express.Router();
 const cors=require('cors');
 const { loginRoute } = require("./login.router");
+const { response } = require("express");
 loginRoute.use(cors())
-productRoute.use(authentication)
+// productRoute.use(authentication)
 
-productRoute.post("/Men/shoes/",async(req,res)=>{
+productRoute.post("/men/shoes/",async(req,res)=>{
     try {
         let obj=req.body;
         let data=await ProductMenMOdel.find(obj);
         res.send(data);
     } catch (error) {
         console.log(error);
-        res.send({"msg":"something went wrong"})
+        res.send({"msg":error})
     }
 });
-productRoute.post("/Men/clothes/",async(req,res)=>{
+productRoute.post("/men/clothes/",async(req,res)=>{
     try {
         let obj=req.body;
         let data=await ProductMenMOdel.find(obj);
@@ -29,7 +33,7 @@ productRoute.post("/Men/clothes/",async(req,res)=>{
     }
 })
 
-productRoute.post("/Women/shoes/",async(req,res)=>{
+productRoute.post("/women/shoes/",async(req,res)=>{
     try {
         let obj=req.body;
        
@@ -41,7 +45,7 @@ productRoute.post("/Women/shoes/",async(req,res)=>{
     }
 });
 
-productRoute.post("/Women/clothes/",async(req,res)=>{
+productRoute.post("/women/clothes/",async(req,res)=>{
     try {
         let obj=req.body;
         let data=await ProductWomenMOdel.find(obj);
@@ -64,7 +68,7 @@ productRoute.post("/boys/shoes/",async(req,res)=>{
 productRoute.post("/boys/clothes/",async(req,res)=>{
     try {
         let obj=req.body;
-        let data=await ProductMenMOdel.find(obj);
+        let data=await ProductboysMOdel.find(obj);
         res.send(data);
     } catch (error) {
         console.log(error);
@@ -74,17 +78,17 @@ productRoute.post("/boys/clothes/",async(req,res)=>{
 productRoute.post("/girls/shoes/",async(req,res)=>{
     try {
         let obj=req.body;
-        let data=await ProductMenMOdel.find(obj);
+        let data=await ProductgirlMOdel.find(obj);
         res.send(data);
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/Men/clothes/",async(req,res)=>{
+productRoute.post("/girls/clothes/",async(req,res)=>{
     try {
         let obj=req.body;
-        let data=await ProductMenMOdel.find(obj);
+        let data=await ProductgirlMOdel.find(obj);
         res.send(data);
     } catch (error) {
         console.log(error);
@@ -92,7 +96,7 @@ productRoute.post("/Men/clothes/",async(req,res)=>{
     }
 });
 //Sorting
-productRoute.get("/Men/clothes",async(req,res)=>{
+productRoute.get("/men/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
             var data=await ProductMenMOdel.find();
@@ -107,7 +111,7 @@ productRoute.get("/Men/clothes",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.get("/Women/clothes",async(req,res)=>{
+productRoute.get("/women/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
             var data=await ProductWomenMOdel.find();
@@ -122,13 +126,13 @@ productRoute.get("/Women/clothes",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.get("/kids/clothes",async(req,res)=>{
+productRoute.get("/boys/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.find();
+            var data=await ProductboysMOdel.find();
             data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.find();
+            var data=await ProductboysMOdel.find();
             data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
@@ -140,10 +144,10 @@ productRoute.get("/kids/clothes",async(req,res)=>{
 productRoute.get("/girls/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.find();
+            var data=await ProductgirlMOdel.find();
             data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.find();
+            var data=await ProductgirlMOdel.find();
             data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
@@ -182,13 +186,13 @@ productRoute.get("/women/shoes",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.get("/kids/shoes",async(req,res)=>{
+productRoute.get("/boys/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.find();
+            var data=await ProductboysMOdel.find();
             data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.find();
+            var data=await ProductboysMOdel.find();
             data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
@@ -197,6 +201,86 @@ productRoute.get("/kids/shoes",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
+//Cart 
+productRoute.post("/add/cart/men",async(req,res)=>{
+    try {
+        let {id,userid}=req.body
+        let data=await ProductMenMOdel.find({_id:id});
+         data=data[0]
+         let {image,type,brand,price,des,category,_id,}=data
+        let cartdata= CartModel({image,type,brand,price,des,userid,category,_id});
+       await cartdata.save()
+       res.send({"msg":"Your item has been added in to bag"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+productRoute.post("/add/cart/girls",async(req,res)=>{
+    try {
+        let {id,userid}=req.body
+        let data=await ProductgirlMOdel.find({_id:id});
+         data=data[0]
+         let {image,type,brand,price,des,category,_id,}=data
+        let cartdata= CartModel({image,type,brand,price,des,userid,category,_id});
+       await cartdata.save()
+       res.send({"msg":"Your item has been added in to bag"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+productRoute.post("/add/cart/boys",async(req,res)=>{
+    try {
+        let {id,userid}=req.body
+        let data=await ProductboysMOdel.find({_id:id});
+         data=data[0]
+         let {image,type,brand,price,des,category,_id,}=data
+        let cartdata= CartModel({image,type,brand,price,des,userid,category,_id});
+       await cartdata.save()
+       res.send({"msg":"Your item has been added in to bag"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+productRoute.post("/add/cart/women",async(req,res)=>{
+    try {
+        let {id,userid}=req.body
+        let data=await ProductWomenMOdel.find({_id:id});
+         data=data[0]
+         let {image,type,brand,price,des,category,_id,}=data
+        let cartdata= CartModel({image,type,brand,price,des,userid,category,_id});
+       await cartdata.save()
+       res.send({"msg":"Your item has been added in to bag"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+productRoute.delete("/delete/cartData/:id",async(req,res)=>{
+    try {
+        let id=req.params.id;
+        
+        await CartModel.findByIdAndDelete({_id:id});
+        res.send({"msg":"Your item has been removed  to bag"})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+
+productRoute.get("/get/cartdData/",async(req,res)=>{
+    try {
+        let id=req.body.userid
+        let data =await CartModel.find({userid:id});
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+
 
 module.exports={
     productRoute
