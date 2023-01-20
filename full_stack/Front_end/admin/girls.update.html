@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men|Patch</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="image" placeholder="https://cdna.lystit.com/200/250/tr/photos/stefaniamode/4ca0bc5e/burberry-neutrals-Vintage-Check-Cotton-Sneakers.jpeg">
+        <input type="text"id="type" placeholder="type">
+        <input type="text" id="Brand" placeholder="Brand">
+        <input type="number" id="Price" placeholder="price">
+        <input type="text"  id="des" placeholder="dsescription.....">
+        <input type="text" id="Category" placeholder="Category">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    let form=document.querySelector("form");
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let image=document.getElementById("image").value;
+        let type=document.getElementById("type").value;
+        let Brand=document.getElementById("Brand").value;
+        let price=document.getElementById("Price").value;
+        let des=document.getElementById("des").value;
+        let category=document.getElementById("Category").value;
+        let obj={image,type,Brand,des,price,category};
+        let id=localStorage.getItem("id");
+        console.log(id);
+        update(obj,id)
+    });
+    async function update(obj,id){
+        try {
+            let res=await fetch(`http://localhost:4500/patch/girls/${id}`,{
+                method:"PATCH",
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization:localStorage.getItem("token")
+                },
+                body:JSON.stringify(obj)
+            });
+            if(res.ok){
+                let ans=await res.json();
+                alert(ans.msg);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+</script>

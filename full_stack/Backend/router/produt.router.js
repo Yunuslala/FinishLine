@@ -1,8 +1,12 @@
 const express=require("express");
 const {ProductMenMOdel}=require("../models/product.model.men");
 const {ProductWomenMOdel}=require("../models/product.model.women")
-
+const { authentication}=require("../middleware/user.authentication");
 const productRoute=express.Router();
+const cors=require('cors');
+const { loginRoute } = require("./login.router");
+loginRoute.use(cors())
+productRoute.use(authentication)
 
 productRoute.post("/Men/shoes/",async(req,res)=>{
     try {
@@ -87,12 +91,15 @@ productRoute.post("/Men/clothes/",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/Men/clothes/?sort",async(req,res)=>{
+//Sorting
+productRoute.get("/Men/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            let data=await ProductMenMOdel.sort({"price":1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            let data=await ProductMenMOdel.sort({"price":-1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
@@ -100,12 +107,14 @@ productRoute.post("/Men/clothes/?sort",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/Women/clothes/?sort",async(req,res)=>{
+productRoute.get("/Women/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductWomenMOdel.sort({"price":1})
+            var data=await ProductWomenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductWomenMOdel.sort({"price":-1})
+            var data=await ProductWomenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
@@ -113,12 +122,14 @@ productRoute.post("/Women/clothes/?sort",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/kids/clothes/?sort",async(req,res)=>{
+productRoute.get("/kids/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.sort({"price":1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.sort({"price":-1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
@@ -126,12 +137,14 @@ productRoute.post("/kids/clothes/?sort",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/girls/shoes/?sort",async(req,res)=>{
+productRoute.get("/girls/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.sort({"price":1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.sort({"price":-1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
@@ -139,12 +152,14 @@ productRoute.post("/girls/shoes/?sort",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/Men/shoes/?sort",async(req,res)=>{
+productRoute.get("/Men/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.sort({"price":1})
+            var data=await ProductMenMOdel.find(); 
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.sort({"price":-1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
@@ -152,12 +167,14 @@ productRoute.post("/Men/shoes/?sort",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/Women/shoes/?sort",async(req,res)=>{
+productRoute.get("/women/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductWomenMOdel.sort({"price":1})
+            var data=await ProductWomenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductWomenMOdel.sort({"price":-1})
+            var data=await ProductWomenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
@@ -165,12 +182,14 @@ productRoute.post("/Women/shoes/?sort",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
-productRoute.post("/kids/shoes/?sort",async(req,res)=>{
+productRoute.get("/kids/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
-            var data=await ProductMenMOdel.sort({"price":1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
-            var data=await ProductMenMOdel.sort({"price":-1})
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
     } catch (error) {
