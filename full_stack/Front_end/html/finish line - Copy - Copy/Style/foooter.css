@@ -1,0 +1,116 @@
+*{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#qr_code{
+  
+  margin: auto;
+  /* border: 1px solid red; */
+  width: 60%
+}
+#more_way{
+    /* border: 2px solid rgb(7, 37, 10); */
+   margin: auto;
+    width: 60%;
+    margin-top: 10px;
+
+}
+#finish_tag{
+    /* border: 1px solid red; */
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+}
+#finish_tag>h1{
+
+font-size: 17px;
+height: 17px;
+}
+#sport_inst{
+
+}
+#table_3{
+    display: flex;
+    width: 65%;
+    margin: auto;
+    font-size: 12px;
+    /* border: 1px solid red; */
+    margin-top: 10px;
+}
+#table_3>div{
+    /* border: 1px solid red; */
+    margin: auto;
+  
+
+
+}
+#table_3>div>p{
+    margin-top: -10px;
+}
+img{
+    width: 100%;
+}
+#p_table>div{
+padding-top: -10px;
+}
+#order_part{
+    display: flex;
+    /* border: 1px solid red; */
+    width: 60%;
+    margin: auto;
+  
+}
+#order_part>div{
+    /* border: 1px solid red; */
+    background-color: #333333;
+    margin: auto;
+    width: 25%;
+}
+
+#order_part>div>p{
+  font-size: 10px;
+  color: white;
+
+}
+#order_part>div>h4{
+color: white;
+}
+#table_last{
+    display: flex;
+    /* border: 1px solid red; */
+    width: 60%;
+    margin: auto;
+}
+#table_last>div{
+    width: 23%;
+    /* border: 1px solid red; */
+}
+#table_last>div>p{
+font-size: 11px;
+padding-top: -2px;
+}
+#table_last>div>h4{
+    font-size: 10px;
+    }
+.finish_pgn>img{
+    width: 40px;
+}
+.finish_div{
+    display: flex;
+}
+.finish_div>div>h4{
+    font-size: 9px;
+}
+.access{
+    font-size: 10px;   
+}
+#footer_last{
+    /* border: 1px solid red; */
+    height: 70px;
+   
+}
+#table_last_end{
+    font-size: 11px; 
+    width: 60%;  
+    margin: auto;
+    padding-top: 20px;
+}

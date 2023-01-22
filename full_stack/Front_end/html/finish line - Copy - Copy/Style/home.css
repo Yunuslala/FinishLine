@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color:#fff;
+}
+#navBar{
+    width:100%;
+    height:100px;
+    /* margin-bottom: 80px; */
+    /* background-color: green; */
+}
+#navBar >  article{
+    width:92%;
+    margin: 0 auto;
+    padding: 10px;
+    height:61px;
+    /* background: #000; */
+}
+#navBar > article > .menuContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+   height: inherit;
+}
+
+.logo img {
+    height: 30px;
+}
+.menu table,tr,td{
+    border-collapse: collapse;
+    border:1px solid gainsboro;
+    padding: 10px;
+    color: grey;
+    font-size:15px;
+}
+.menu table input {
+    border: none;
+    outline: none;
+}
+.menu table i {
+    padding-right: 10px;
+    font-size: 20px;
+}
+#menuItems{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    /* height:50px; */
+    /* background-color: red; */
+}
+select{
+    /* visibility: hidden; */
+    width: 110%;
+    margin-left: -10px;
+    padding: 10px 0;
+}
+#menuItems a {
+    text-decoration: none;
+    color: gray;
+    text-transform: uppercase;
+    padding: 10px;
+}
+.boost_status{
+    width:100%;
+    background:rgb(41, 41, 41);
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: small;
+    font-weight:bold;
+}
+.boost_status a ,p{
+    color: white;
+    padding: 3px;
+}
+
+#signupdrop{
+    visibility: hidden;
+    /* width:300%; */
+    width:338px;
+    top:63px;
+   right: 73px;
+    background-color: #fff;
+    padding-top: 20px;
+    padding-left: 10px;
+
+}
+#signupdrop>a{
+    display: block;
+    text-decoration: none;
+}
+#account:hover #signupdrop {
+visibility: visible;
+}
+#signupdrop{
+    background-color: #fff;
+    position: absolute;
+    /* visibility: hidden; */
+    /* border: 1px solid black; */
+}
+#signupdrop>a{
+    margin-bottom: 10px;
+    color:rgb(68, 67, 67)
+
+}

@@ -1,0 +1,351 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.bannerContainer{
+    position: relative;
+}
+body{
+    background-color:#fff;
+}
+#navBar{
+    width:100%;
+    height:100px;
+    /* background-color: green; */
+}
+#navBar >  article{
+    width:92%;
+    margin: 0 auto;
+    padding: 10px;
+    height:61px;
+    
+    /* background: #000; */
+}
+#navBar > article > .menuContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+   height: inherit;
+}
+
+.logo img {
+    height: 30px;
+}
+.menu table,tr,td{
+    border-collapse: collapse;
+    border:1px solid gainsboro;
+    padding: 10px;
+    color: grey;
+    font-size:15px;
+}
+.menu table input {
+    border: none;
+    outline: none;
+    width: 300px;
+}
+.menu table i {
+    padding-right: 10px;
+    font-size: 20px;
+}
+#menuItems{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    /* height:50px; */
+    /* background-color: red; */
+}
+#menuItems a {
+    text-decoration: none;
+    color: gray;
+    text-transform: uppercase;
+    padding: 10px;
+}
+.boost_status{
+    width:100%;
+    background:rgb(41, 41, 41);
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: small;
+    font-weight:bold;
+}
+.boost_status  div > a ,.boost_status div > p{
+    color: white;
+    padding: 3px;
+   
+}
+.bannerContainer{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+.between_menuBar,.latestStyle{
+    width:100%;
+    margin-top: 15px;
+}
+.between_menuBar article{
+    width: 92%;
+    margin: 0 auto;
+    padding: 10px;
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    display: flex;
+    justify-content:center;
+}
+.between_menuBar article a{
+    /* border-left: 1px solid grey; */
+    border-right: 1px solid gainsboro;
+    padding: 15px;
+    text-decoration: none;
+    color: grey;
+    text-transform: capitalize;
+}
+.between_menuBar article > a:nth-last-child(1)
+{
+    border: none;
+}
+ h1{
+    text-align: center;
+    padding: 5px;
+}
+.latestStyle article {
+    width: 92%;
+    margin: 10px auto;
+    display: flex;
+    justify-content:center;
+    gap:20px;
+}
+.latestStyle article > div > a > img{
+    width:280px;
+}
+.latestStyle article >div > a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    padding: 5px;
+}
+.latestStyle article > div > a > p
+{
+    padding: 5px;
+}
+.latestStyle article > div > a > p:hover{
+    text-decoration: underline;
+}
+.logoContainer{
+    width:100%;
+    margin-top: 10px;
+}
+.logoContainer >article{
+    width: 92%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-around;
+    /* gap: 15px; */
+    padding: 20px;
+    align-items: center;
+}
+.logoContainer >article > div{
+    width:100px;
+    height:60px;
+    
+}
+.logoContainer >article > div > img {
+    width: 100%;
+}
+.logoContainer > div {
+    text-align: center;
+    margin-top: 20px;
+    
+}
+.logoContainer > div > a
+{
+    color: black;
+}
+
+.logoContainer > div > a:hover{
+    color:purple;
+    font-size: small;
+}
+.three_image{
+    width:100%;
+    margin-top: 30px;
+}
+.three_image > article{
+    width:92%;
+    margin: 0 auto;
+    display: flex;
+    justify-content:space-between;
+
+}
+.three_image img {
+    width:400px;
+}
+.three_image article > div > a > p {
+
+    padding: 10px;
+    color: black;
+    text-align: center;
+}
+.recommended > div {
+    width:250px;
+    border: 1px solid gainsboro;
+}
+.recommended > div > a{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+.recommended > div > a > div {
+  text-align: justify;  
+  padding: 10px;
+}
+.recommended > div > a > div > p:nth-child(2)
+{
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: small;
+}
+.recommended > div > a > div > p:nth-child(1)
+{
+    margin-bottom: 5px;
+    color:grey;
+    font-size: small;
+}
+.recommended > div > a > div > span
+{
+
+    font-size: smaller;
+}
+.recommended > div > a > div > span > i{
+    color: grey;
+    font-size: smaller;
+}
+
+
+#signupdrop{
+    visibility: hidden;
+    /* width:300%; */
+    width:338px;
+    top:63px;
+   right: 73px;
+    background-color: #fff;
+    padding-top: 20px;
+    padding-left: 10px;
+
+}
+#signupdrop>a{
+    display: block;
+    text-decoration: none;
+}
+#account:hover #signupdrop {
+visibility: visible;
+}
+#signupdrop{
+    background-color: #fff;
+    position: absolute;
+    /* visibility: hidden; */
+    /* border: 1px solid black; */
+}
+#signupdrop>a{
+    margin-bottom: 10px;
+    color:rgb(68, 67, 67)
+
+}

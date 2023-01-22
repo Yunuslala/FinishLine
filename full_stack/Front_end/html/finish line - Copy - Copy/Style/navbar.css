@@ -14,9 +14,7 @@
     height: 40px;
     padding: 0 10px;
 }
-#droplinks{
-    /* margin-top:- 0px; */
-}
+
 #drop_links ul{
     display: inline-flex;
     margin: auto;
@@ -55,6 +53,11 @@ a{
     position: fixed;
 
 } 
+/* #drop_links ul li :hover .bannerContainer,
+#drop_links ul li :hover .bannerContainer,
+#drop_links ul li :hover .bannerContainer{
+    visibility: hidden;
+} */
 #max_drop1>div>img{
     width:100%;
     object-fit: cover;

@@ -35,16 +35,17 @@ loginRoute.post("/login",async(req,res)=>{
         let {email,pass}=req.body
         let registeredData=await loginModel.find({email});
         if(registeredData.length>0){
+            console.log(registeredData);
             bcrypt.compare(pass, registeredData[0].pass, function(err, result) {
                 if(result){
                     var dataid=registeredData[0]._id;
                     var name=registeredData[0].fname;
                     console.log(name,dataid);
                     var token=jwt.sign({dataid,name},'aquos');
-                    res.send({"msg":"You have been logged in",token,name})
+                    res.send({"msg":"You have been logged in",token,name,staus:true})
                 }else{
                     console.log(err);
-                    res.send({"msg":"wrong password please enter correct password"})
+                    res.send({"msg":"wrong password please enter correct password",staus:false})
                 }
             });
         }
@@ -53,6 +54,7 @@ loginRoute.post("/login",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
+
 
 module.exports={
 loginRoute

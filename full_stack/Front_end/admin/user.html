@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user|page</title>
+    <style>
+        #container{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:20px;
+            padding:40px 50px;
+        }
+        #container>div{
+           background-color: gray;
+           color: white;
+           padding:15px 20px;
+           align-items: center;
+        }
+        #container>div>button{
+           background-color: none;
+           border: none;
+           padding: 5px 8px;
+           color: rgb(134, 130, 130);
+        }
+        h1{
+            width:20%;
+            margin:auto;
+            color: rgb(133, 127, 127);
+            margin-top: 60px;
+            text-decoration: underline;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>All Users</h1>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+    async function userpage(){
+        try {
+            let res=await fetch("http://localhost:4500/user",{
+                method:"GET",
+                headers:{
+      "Content-Type":"application/json",
+      Authorization:localStorage.getItem("token")
+    },
+            });
+            let ans=await res.json()
+            display(ans)
+            console.log(ans);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    userpage()
+    let main=document.getElementById("container")
+    function display(data){
+        main.innerHTML=""
+        main.innerHTML=data.map((item)=>{
+            console.log(item);
+           let ans=
+            `
+            <div>
+                <h4>Name: ${item.fname}${item.lname}</h4>
+                <p>Email: ${item.email}</p>
+                <p>Dob: ${item.Dob}</p>
+                <button data-id=${item._id} class="remove">Remove</button>
+                </div>
+            `
+            return ans
+        }).join(" ")
+    let removebtn=document.querySelectorAll(".remove");
+    console.log(removebtn);
+    for(let btn of removebtn){
+        btn.addEventListener("click",(e)=>{
+            remove(e.target.dataset.id)
+        })
+    }
+
+    }
+    
+   
+console.log(localStorage.getItem("token"));
+    async function remove(id){
+        try {
+            let ans=await fetch(`http://localhost:4500/user/delete/${id}`,{
+                method:"DELETE",
+                headers:{
+      "Content-Type":"application/json",
+      Authorization:localStorage.getItem("token")
+    },
+
+            });
+            let res=await ans.json()
+            display(res.data)
+            alert(res.msg)
+        } catch (error) {
+            console.log(error);
+        }
+        console.log(id);
+
+    }
+    console.log(main);
+</script>

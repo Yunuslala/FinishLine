@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="signup.css">
 </head>
 <body>
+    
     <div id="img">
         <img src="https://account.finishline.com/static/media/fnl-logo.17a8d67e.svg" alt="">
     </div>
@@ -29,6 +30,7 @@
             <input type="text" placeholder="User Login" id="submit">
         </form>
     </div>
+    <a href="../admin/adminProductPage.html"></a>
 
 </body>
 </html>
@@ -57,12 +59,15 @@
             });
             if(res.ok){
                 let ans=await res.json();
-                alert(ans.msg);
+                
                 if(ans.name=="admin"){
                     alert("welcome admin You have been login");
-                    window.location=""
+                    window.location="../admin/adminProductPage.html"
+                }else{
+                    alert(ans.msg);
+                    localStorage.setItem("usertoken",ans.token);
+                    window.location.href="../html/index.html"
                 }
-                window.location="index.html"
             }
         } catch (error) {
             

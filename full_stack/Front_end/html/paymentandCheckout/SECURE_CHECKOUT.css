@@ -1,0 +1,96 @@
+*{
+    color: #545454;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#h1_secure{
+    text-align: center;
+}
+#btn_tag1{
+    display: flex;
+    text-align: center;
+    /* border: 1px solid red; */
+    justify-content: space-between;
+    width: 33%;
+
+    margin: auto;
+ 
+}
+#shipbtn{
+    padding-left: -10px;
+}
+#btn_tag1>div>button{
+   border-radius: 50%;
+   height: 30px;
+   width: 30px;
+    margin: auto;
+    justify-content: space-between;
+}
+#btn_tag1>div:nth-child(1){
+ 
+}
+
+
+#h4_heading{
+display: flex;
+
+}
+#h4_heading>p{
+    padding-left: 10px;
+    font-size: 12px;
+    margin-top: 35px;
+    margin-left: 250px;
+
+}
+#shippint_btn{
+    display: flex;
+    /* border: 1px solid red; */
+    text-align: center;
+    height: 40px;
+    width: 40%;
+    margin: auto;
+}
+#shippint_btn>p{
+  margin: auto;
+}
+#fname,#lname{
+    padding: 8px 80px;
+   
+  /* width: 20%;
+  height: 30px; 
+    */
+}
+#address,#apt{
+    display: block;
+    padding: 8px 242px;
+    margin-top: 15px;
+}
+#City{
+    padding: 8px 25px;
+    margin-top: 15px;
+    
+
+}
+#select_1{
+    padding: 8px 58px;
+    margin-left: 15px;
+}
+#Postal_Code{
+    padding: 8px 15px;
+    margin-left: 25px;
+}
+#submit_btn{
+    padding: 8px 55px; 
+    background-color: #008fdb;
+    color: white;
+    border: 0px;
+}
+form{
+    /* border: 1px solid red; */
+    display: block;
+    
+}
+#form_body{
+    margin: auto;
+    /* border: 1px solid red; */
+    width: 50%;
+}

@@ -1,0 +1,33 @@
+#img{
+    width:100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    border-bottom: 1px solid rgb(94, 93, 93);
+}
+form{
+    width:15%;
+    margin:auto;
+    padding: 15px 15px;
+}
+form>input{
+    display:block;
+    width:140%;
+    padding:15px 8px;
+    margin-bottom: 18px;
+}
+#admin_upd{
+    width:10%;
+    margin: auto;
+    font-size: 20px;
+    padding: 20px 10px;
+}
+
+#submit{
+    border: none;
+    width:150%;
+    font-size: 20px;
+    background-color: gray;
+    color: white;
+}
