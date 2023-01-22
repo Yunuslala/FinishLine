@@ -6,10 +6,32 @@ const {ProductgirlMOdel}=require("../models/product.model.girls")
 const {ProductboysMOdel}=require("../models/product.model.boys")
 const {ProductWomenMOdel}=require("../models/product.model.women");
 const {adminAuthentication}=require("../middleware/admin.authentication")
+const {loginModel}=require("../models/login.model");
 const {men,Women,girls,boys}=require("../json");
 const cors=require('cors')
 admin.use(cors())
-// admin.use(adminAuthentication);
+admin.use(adminAuthentication);
+
+admin.get("/user",async(req,res)=>{
+    try {
+        let data=await loginModel.find()
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
+admin.delete("/user/delete/:id",async(req,res)=>{
+    try {
+        let id=req.params.id
+        await loginModel.findByIdAndDelete({_id:id});
+        let data=await loginModel.find()
+        res.send({"msg":"user has been deleted",data})
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+})
 
 admin.post("/post/men",async(req,res)=>{
     try {
@@ -57,7 +79,8 @@ admin.post("/post/add/women",async(req,res)=>{
         let data=req.body;
         let postdata= ProductWomenMOdel(data);
         await postdata.save();
-        res.send({"msg":"your  Women data has been posted"})
+        let newdata=await ProductWomenMOdel.find()
+        res.send({"msg":"your  Women data has been posted",newdata})
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})
@@ -142,6 +165,88 @@ admin.post("/men/sort",async(req,res)=>{
         res.send({"msg":error})
     }
 })
+admin.get("/women/sort/price/",async(req,res)=>{
+    try {
+        console.log("object");
+        if(req.query.sort=="asc"){
+            var data=await ProductWomenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductWomenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
+        };
+        // console.log("data");
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+admin.get("/men/sort/price/",async(req,res)=>{
+    try {
+        console.log("object");
+        if(req.query.sort=="asc"){
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductMenMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
+        };
+        // console.log("data");
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+//
+
+// productRoute.get("/girls/shoes",async(req,res)=>{
+//     try {
+//         if(req.query.sort=="asc"){
+//             var data=await ProductgirlMOdel.find();
+//             data.sort((a,b)=> a.price-b.price);
+//         }else if(req.query.sort=="desc"){
+//             var data=await ProductgirlMOdel.find();
+//             data.sort((a,b)=> b.price-a.price);
+//         };
+//         res.send(data)
+//     } catch (error) {
+//         console.log(error);
+//         res.send({"msg":"something went wrong"})
+//     }
+// });
+// productRoute.get("/Men/shoes",async(req,res)=>{
+//     try {
+//         if(req.query.sort=="asc"){
+//             var data=await ProductMenMOdel.find(); 
+//             data.sort((a,b)=> a.price-b.price);
+//         }else if(req.query.sort=="desc"){
+//             var data=await ProductMenMOdel.find();
+//             data.sort((a,b)=> b.price-a.price);
+//         };
+//         res.send(data)
+//     } catch (error) {
+//         console.log(error);
+//         res.send({"msg":"something went wrong"})
+//     }
+// });
+// productRoute.get("/women/shoes",async(req,res)=>{
+//     try {
+//         if(req.query.sort=="asc"){
+//             var data=await ProductWomenMOdel.find();
+//             data.sort((a,b)=> a.price-b.price);
+//         }else if(req.query.sort=="desc"){
+//             var data=await ProductWomenMOdel.find();
+//             data.sort((a,b)=> b.price-a.price);
+//         };
+//         res.send(data)
+//     } catch (error) {
+//         console.log(error);
+//         res.send({"msg":"something went wrong"})
+//     }
+// });
+//
 admin.post("/women/sort",async(req,res)=>{
     try {
         let data=await ProductWomenMOdel.find(req.body);

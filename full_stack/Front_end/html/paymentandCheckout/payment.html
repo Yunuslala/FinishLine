@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment|Page</title>
+    <link rel="stylesheet" href="payment.css">
+    <!-- <link rel="stylesheet" href="../productpages/cart.css"> -->
+</head>
+<body>
+    <h1 id="h1_secure">SECURE CHECKOUT</h1>
+    <div>
+        <div id="btn_tag1"><div><button>1</button></div>
+        <div><button>2</button></div>
+        <div><button>3</button></div>
+    </div>
+        <div id="shippint_btn">
+            <P>Shipping</P>
+            <P>Payment & Billing</P>
+            <P>Order Placed</P>
+        </div>
+    </div>
+    <div id="form_body">
+        <div id="headparent">
+            <div id="h4_heading"><h4>Payment</h4> <p>Sign in or create an account for express checkout. Sign In</p></div>
+            <div  id="method">
+                <h3>Select Payment Method</h3>
+                <div>
+                    <div id="num">
+                        <input type="Number" placeholder="Card Number" id="cardnum">
+                    </div>
+                    <div id="deta">
+                        <input type="text" placeholder="Month" id="month">
+                        <input type="text" placeholder="Year" id="year">
+                        <input type="text" placeholder="CVV" id="cvv">
+                    </div>
+                   <h3>Billing Adress</h3>
+                   <p>Billing and shipping address are the same</p>
+                </div>
+            </div>
+            <button id="placed">Place Order</button>
+        </div>
+   
+    <div id="summary">
+        <h5>purchase Summary</h5>
+                        <div id="cupon">
+                            <p>Enter a cupon Code</p>
+                            <p>+</p>
+                        </div>
+                        <div id="subtotal">
+                            <p id="subtotalelem">Subtotal (1 item)</p>
+                            <p class="net">$125.00</p>
+                            <p>Estimated Shipping</p>
+                            <p>Free</p>
+                            <p>Tax</p>
+                            <p>TBD</p>
+                        </div>
+                        <div id="total">
+                            <p>Total</p>
+                            <p>$125.00</p>
+                        </div>
+    </div>
+</div>
+</body>
+</html>
+<a href="../index.html"></a>
+<script>
+document.getElementById("#placed").addEventListener("click",()=>{
+    let cardnum=document.getElementById("#cardnum").value;
+    let month=document.getElementById("month").value;
+    let year=document.getElementById("year").value;
+    let cvv=document.getElementById("cvv").value;
+    if(cardnum==""||month==""||year==""||cvv==""){
+        alert("Please Fill all the details")
+    }else{
+        alert("you have successfully purchased")
+        window.location.href="../index.html"
+    }
+})
+</script>

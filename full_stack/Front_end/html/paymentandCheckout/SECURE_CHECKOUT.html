@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure checkout</title>
+    <link rel="stylesheet" href="SECURE_CHECKOUT.css">
+</head>
+
+<body>
+    <h1 id="h1_secure">SECURE CHECKOUT</h1>
+    <div>
+        <div id="btn_tag1"><div><button>1</button></div>
+        <div><button>2</button></div>
+        <div><button>3</button></div>
+    </div>
+        <div id="shippint_btn">
+            <P>Shipping</P>
+            <P>Payment & Billing</P>
+            <P>Order Placed</P>
+        </div>
+    </div>
+    <div id="form_body">
+    <div id="h4_heading"><h4>SHIPPING</h4> <p>Sign in or create an account for express checkout. Sign In</p></div>
+   
+    <form action="/action_page.php">
+        <!-- <label for="fname">First Name</label> -->
+        <input type="text" id="fname" name="firstname" placeholder="First Name">
+        <input type="text" id="lname" name="lastname" placeholder="Last Name">
+        <input type="text" id="address" name="address" placeholder="Address / PO Box">
+        <input type="text" id="apt" name="apt" placeholder="Apt / Suite (Optional)">
+        <input type="text" id="City" name="City" placeholder="City">
+        <select name="" id="select_1" placeholder="State">
+            <option value="select">Select</option>
+            <option value="al">Alaska</option>
+            <option value="am">Alabama</option>
+            <option value="co">Coloedo</option>
+            <option value="hi">Hawaii</option>
+            <option value="do">District of</option>
+            <option value="fl">Florida</option>
+
+        </select>
+        <input type="text" id="Postal_Code" name="Postal Code" placeholder="Zip/Postal Code">
+        <p>Delivery Method</p>
+  <input type="radio" id="Standard" name="Standard" value="">
+  <label for="Standard">Standard</label><br>
+  <input type="radio" id="Upgraded" name="Upgraded" value="">
+  <label for="age2">Upgraded</label><br>  
+  <input type="radio" id="Rush" name="Rush" value="">
+  <label for="">Rush</label><br>
+  <input type="radio" id="Rush" name="Rush" value="">
+  <label for="">Express</label><br>
+
+  <p style="color: red;font-size: 12px; ">Session may have timed out. Please refresh the page to continue.</p><br>
+  <p style="font-size: 12px;">See Shipping Methods & Policies. <br>
+    Delivery estimates are subject to change.</p>
+  <input type="submit" value="CONTINUE TO PAYMENT" id="submit_btn">
+ </form>
+</div>     
+</body>
+
+</html>
+<script>
+    document.getElementById("submit_btn").addEventListener("click",(e)=>{
+        e.preventDefault()
+let fname=document.getElementById("fname").value;
+let lname=document.getElementById("lname").value;
+let address=document.getElementById("address").value;
+let apt=document.getElementById("apt").value;
+let City=document.getElementById("City").value;
+if(fname==""||lname==""||address==""||apt==""||City==""){
+    alert("Fill all the details")
+}else{
+    console.log("object");
+    window.location.href="./payment.html"
+}
+
+
+    })
+</script>

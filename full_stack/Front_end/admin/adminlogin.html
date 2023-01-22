@@ -1,39 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/navbar.css" />
-    <!-- <script src="https://kit.fontawesome.com/ff29a3d799.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" /> 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" /> -->
+    <link rel="stylesheet" href="../html/signup.css">
 </head>
-
 <body>
-    <div id="nav_bar">
-        <div>
-            <img src="#" alt="" />
+    <section id="navBar">
+        <article>
+          <div class="menuContainer
+          ">  
+            <div class="logo">
+            <img src="https://www.finishline.com/store/assets/images/FINISH_LINE_2_COLOR_MED_300x44.png" alt="">
         </div>
-        <div id="nav_section">
-            <div>
-                <input type="search" placeholder="search" />
-            </div>
-            <div>
-                <i class="fa-solid fa-bags-shopping"></i>
-                <p>Choose A Store</p>
-            </div>
-            <div>
-                <p>Account</p>
-            </div>
-            <div>
-                <i class="fa-thin fa-bag-shopping"></i>
-                <p>Bag</p>
-            </div>
+        <div class="menu">
+            <table>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search">
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-location-dot"></i>
+                        choose a store</td>
+                    <td id="account">
+                        <i class="fa-solid fa-user"></i>
+                        Account
+                        
+                        <!-- <select name="" id="">
+                            <option value=""><a href="#">Sign in</a>
+                            </option>
+                            <option value=""> <a href="#">Login</a></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select> -->
+                        <div id="signupdrop">
+                            <a href="../html/signup.html">Sign in</a>
+                            <a href="../html/login.html">login</a>
+                            <a href="#">staus</a>
+                            <a href="#">favourite</a>
+                        </div>
+                    </td>
+                   
+                       
+                    <td>
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        Bag</td>
+                </tr>
+            </table>
         </div>
     </div>
+        </article>
+        <!-- <article id="menuItems">
+            <a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a><a href="">one1</a>
+        </article> -->
+    </section>
     <div id="drop_links">
         <ul>
             <li>
@@ -62,7 +85,7 @@
                 </div>
             </li>
             <li>
-                <div style="margin-bottom:-30px"> MEN</div>
+                <span><a href="../html/man.html">MEN</a></span>
                
                 <div id="max_drop2">
                     <div class="container">
@@ -130,7 +153,7 @@
                 </div>
             </li>
             <li>
-                WOMEN
+                <span><a href="../html/women.html">WOMEN</a></span>
                 <div id="max_drop3">
                     <div class="container">
                         <div class="logo_png">
@@ -197,7 +220,8 @@
                 </div>
             </li>
             <li>
-                BOYS
+                <span><a href="../html/boy.html">BOYS</a></span>
+                 
                 <div id="max_drop3">
                     <div class="container">
                         <div class="container">
@@ -266,7 +290,7 @@
                         </div>
             </li>
             <li>
-                GIRLS
+                <span><a href="../html/girl.html">Girls</a></span>
                 <div id="max_drop3">
                     <div class="container"></div>
                     <div class="logo_png">
@@ -502,6 +526,80 @@
             </li>
         </ul>
     </div>
-</body>
 
+    <section class="boost_status">
+         <div>
+            <p>
+                BOOST YOUR STATUS
+            </p>
+            <p>
+                Stay in loop For Releases Shopping Promotions,and more
+            </p>
+            <a href="#">Join For Free and Sign in.</a>
+         </div>
+    </section>
+    
+    <div id="img">
+        <img src="https://account.finishline.com/static/media/fnl-logo.17a8d67e.svg" alt="">
+    </div>
+    <div>
+        <img src="https://account.finishline.com/static/media/STATUS_logo_black.3c28c69a.svg" alt="">
+        <p>ONE ACCOUNT.</p>
+        <p>MORE ACCESS.</p>
+    </div>
+   
+        <h2> Admin please Fill Credentials For login </h2>
+        <div id="create">
+       <p>Earn 10 points for every $1 you spend.</p>
+       <p> Get Points. Gain Access. Boost your STATUS.</p>
+    </div>
+    <div id="form">
+        <form action="">
+            <input type="email" placeholder="Email" id="email">
+            <input type="password" placeholder="Password" id="pass">
+            <input type="text" placeholder="Admin Login" id="submit">
+        </form>
+    </div>
+
+</body>
 </html>
+<script>
+    let submit=document.getElementById("submit");
+    submit.addEventListener("click",(e)=>{
+        e.preventDefault()
+        let email=document.getElementById("email").value;
+        let pass=document.getElementById("pass").value;
+        if(email==""||pass==""){
+            alert("fill the form")
+        }else{
+            let obj={email,pass}
+            adminpanel(obj)
+        }
+    });
+    async function adminpanel(obj){
+        try {
+            let res=await fetch("http://localhost:4500/login",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(obj)
+            });
+            if(res.ok){
+                let ans=await res.json();
+                console.log(ans);
+                if(ans.staus){
+                    localStorage.setItem("token",ans.token)
+                alert(`welcom admin ${ans.msg}`);
+                window.location = "adminProductPage.html";
+                }else{
+                    alert(ans.msg)
+                }
+                
+            }
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+</script>

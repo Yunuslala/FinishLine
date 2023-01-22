@@ -96,6 +96,7 @@ productRoute.post("/girls/clothes/",async(req,res)=>{
     }
 });
 //Sorting
+
 productRoute.get("/men/clothes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
@@ -228,6 +229,7 @@ productRoute.post("/women/type/shoes",async(req,res)=>{
         res.send({"msg":"something went wrong"})
     }
 });
+
 productRoute.get("/girls/shoes",async(req,res)=>{
     try {
         if(req.query.sort=="asc"){
