@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men|BasketballShoes</title>
+    <link rel="stylesheet" href="products.css">
+    <style>
+        
+     
+    
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div>
+            <div id="brand">
+                <p>Nike</p>
+                <p>Adidas</p>
+                <p>puma</p>
+                <p>Reebok</p>
+                <p></p>
+            </div>
+        </div>
+        <div>
+            <div id="select">
+                <select name="" >
+                    <option value="">Sort by: Relevance</option>
+                    <option value="">Sort by price low to high</option>
+                    <option value="">Sort by price high to low</option>
+                </select>
+            </div>
+            <div id="divprdoucts">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    let obj={"type":"Girls Big Kids Shoes"}
+    let select=document.querySelector("select");
+    select.addEventListener("change",async()=>{
+        console.log(obj);
+        let value=select.value;
+        console.log(value);
+        try {
+            let res=await fetch(`http://localhost:4500/girls/type/shoes?sort=${value}`,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(obj)
+            })
+            if(res.ok){
+                let data=await res.json();
+                console.log(data);
+                display(data)
+
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    })
+    fetchProductsdata()
+    async function fetchProductsdata(){
+        try {
+            let res=await fetch("http://localhost:4500/girls/shoes/",{
+                method:"POST",
+                    headers:{
+                "Content-Type":"application/json",
+                Authorization:localStorage.getItem("token")
+              },
+              body:JSON.stringify(obj)
+            });
+            if(res.ok){
+                let ans=await res.json();
+                console.log(ans);
+                display(ans);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    let appendData=document.querySelector("#divprdoucts")
+    function display(data){
+        console.log(appendData);
+      appendData.innerHTML=""
+        appendData.innerHTML= data.map((item)=>{
+       let ans=
+        `
+        <div class="products_div" >
+            <img src=${item.image}>
+            <h4> ${item.des}</h4>
+            <p>$ ${item.price}</p>
+            <button data-id=${item._id}  class="bag_btn">
+                Add to Bag
+                </button>
+            </div>
+        `
+        return ans
+        }).join(" ");
+      let div=document.querySelectorAll(".bag_btn");
+      for(let btn of div){
+        let count=0;
+        btn.addEventListener("click",(e)=>{
+            count++;
+            if(count<2){
+                let data_id=e.target.dataset;
+            addBag(data_id)
+            }else{
+                alert("Your Product has been alreday added in bag")
+            }
+           
+        })
+      }
+    }
+    async function  addBag(data_id){
+        try {
+            let  res=await fetch("http://localhost:4500/add/cart/girls",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization:localStorage.getItem("token")
+                },
+                body:JSON.stringify(data_id)
+            });
+            if(res.ok){
+                let ans=await res.json()
+                alert(ans.msg)
+            }
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+</script>

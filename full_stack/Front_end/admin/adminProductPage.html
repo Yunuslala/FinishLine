@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Product_Page</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="adminPage.css">
 </head>
-<style>
-    #wrapper{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        gap:20px;
-        width: 50%;
-        align-items: center;
-        margin:auto;
-    }
-    #wrapper>div{
-        border:1px solid black;
-    }
-</style>
+
 <body>
-    <div id="wrapper">
-        <div id="men">
-            <img src="" alt="">
-            <p>Men</p>
-        </div>
-        <div id="women">
-            <img src="" alt="">
-            <p>Women</p>
-        </div >
-        <div id="kids">  <img src="" alt="">
-            <p>Kids</p></div>
-        <div id="girls">  <img src="" alt="">
-            <p>Girls</p></div>
+    <div class="top">DATA HANDALE BY ADMIN</div>
+    <div id="container">
+        <button class="allProducts" id="kids">BOYS PRODUCTS</button>
+        <button class="mensProducts" id="men">MENS PRODUCTS</button>
+        <button class="womensProducts" id="women">WOMENS PRODUCTS</button>
+        <button class="checkoutProducts" id="girls">GIRLS PRODUCTS</button>
+        <button class="allUsers" id="alluser">ALL USERS</button>
     </div>
+
+
+    <p class="totalProduct"></p>
+
+    <div class="add"></div>
+
+    <div class="appenddiv"></div>
+
 </body>
-</html>
 <script>
     let men=document.getElementById("men");
     men.addEventListener("click",()=>{

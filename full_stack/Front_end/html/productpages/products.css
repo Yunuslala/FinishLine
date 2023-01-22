@@ -1,0 +1,53 @@
+#divprdoucts{
+    display:grid;
+    grid-template-columns:repeat(4,1fr) ;
+    gap: 2px;
+    margin-top: 80px;
+}
+
+#divprdoucts>div{
+    /* border: 1px solid black; */
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom:8px;
+}
+#divprdoucts>div:hover{
+
+    box-shadow: 3px 3px 3px 3px rgb(169 169 169);
+    width: 95%;
+    padding-bottom:18px;
+    transition:all 1.3sec ease;
+}
+
+#divprdoucts>div>img{
+    width: 100%;
+    object-fit: cover;
+}
+#divprdoucts>div>button{
+border: none;
+background-color: darkgray;
+padding: 10px 8px;
+}
+
+#parent{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: space-evenly;
+}
+select{
+    height:50px;
+    width:100%;
+    padding: 2px;
+}
+#parent>:nth-child(2){
+    width:70%;
+}
+
+#select{
+   margin-left: 800px;
+  
+}

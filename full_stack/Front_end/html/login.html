@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../html/signup.css">
+    <link rel="stylesheet" href="signup.css">
 </head>
 <body>
     <div id="img">
@@ -17,7 +17,7 @@
         <p>MORE ACCESS.</p>
     </div>
    
-        <h2> Admin please Fill Credentials For login </h2>
+        <h2>CREATE A STATUS ACCOUNT</h2>
         <div id="create">
        <p>Earn 10 points for every $1 you spend.</p>
        <p> Get Points. Gain Access. Boost your STATUS.</p>
@@ -26,7 +26,7 @@
         <form action="">
             <input type="email" placeholder="Email" id="email">
             <input type="password" placeholder="Password" id="pass">
-            <input type="text" placeholder="Admin Login" id="submit">
+            <input type="text" placeholder="User Login" id="submit">
         </form>
     </div>
 
@@ -38,32 +38,34 @@
         e.preventDefault()
         let email=document.getElementById("email").value;
         let pass=document.getElementById("pass").value;
-        if(email==""||pass==""){
-            alert("fill the form")
-        }else{
-            let obj={email,pass}
-            adminpanel(obj)
-        }
-    });
-    async function adminpanel(obj){
+       if(email==""||pass==""){
+        alert("fill all the credentials")
+       }
+       else{
+        let obj={email,pass}
+        signup(obj)
+       }
+    })
+    async function signup(data){
         try {
             let res=await fetch("http://localhost:4500/login",{
                 method:"POST",
                 headers:{
-                    "content-type":"application/json"
+                    "Content-Type":"application/json"
                 },
-                body:JSON.stringify(obj)
+                body:JSON.stringify(data)
             });
             if(res.ok){
                 let ans=await res.json();
-                console.log(ans);
-                localStorage.setItem("token",ans.token)
-                alert(`welcom admin ${ans.msg}`);
-                window.location = "adminProductPage.html";
+                alert(ans.msg);
+                if(ans.name=="admin"){
+                    alert("welcome admin You have been login");
+                    window.location=""
+                }
+                window.location="index.html"
             }
         } catch (error) {
-            console.log(error);
-
+            
         }
     }
 </script>
