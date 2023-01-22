@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart_page</title>
+    <style>
+        #parent{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #parent>:nth-child(2){
+           width:30%;
+        }
+        #parent>:nth-child(1){
+           width:65%;
+        }
+        #points{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #points>div>img{
+            width: 90%;
+            margin-top: -19px;
+            padding-left: 10px;
+           
+        }
+        #points>:nth-child(2){
+           
+            margin-left: 20px;
+           
+           
+        }
+        #cuponl{
+            display:flex;
+            justify-content: space-between;
+            
+        }
+        #total{
+            display: flex;
+            justify-content: space-between;
+            width: 57%;
+        }
+        #subtotal{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            row-gap: -15px;
+            border-bottom: 1.7px solid rgb(56, 55, 55);
+           
+        }
+        #subtotal>p~p{
+            margin-top:-4px ;
+        }
+        #subtotal>:nth-child(2){
+            margin-top:8px ;
+        }
+        #container>div{
+            padding:12px 0;
+            width:100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border-top: 1px solid rgb(126, 126, 126);
+            border-bottom: 1px solid rgb(126, 126, 126);
+        }
+        #container>div>div>img{
+            width: 70%;
+            object-fit: cover;
+        }
+        #container>div>div>:nth-child(1){
+            font-size: 16px;
+            /* font-weight: light; */
+            color: rgb(48, 43, 43);
+        }
+        #container>div>div>p{
+            font-size: 14px;
+            /* font-weight: light; */
+            color: rgb(106, 102, 102);
+        }
+        #container>div>:nth-child(2){
+            margin-top: -30px;
+           width:30%
+        }
+        .qty{
+            display: flex;
+            /* width:10%; */
+            justify-content: space-evenly;
+            margin-top: -160px;
+            align-items: center;
+            /* position: fixed;
+            top: 0; */
+        }
+        #greatParent{
+            width:80%;
+            margin: auto;
+        }
+        .qty~div{
+            margin-top: -160px;
+        }
+        .qty+div+div{
+            /* font-weight: normal; */
+            text-decoration: underline;
+            color: rgb(106, 102, 102);
+        }
+        .qty>:nth-child(1){
+            font-size: 80px;
+        }
+        .qty>:nth-child(2){
+            color: rgb(106, 102, 102);
+        }
+        .qty>:nth-child(1),:nth-child(2):hover{
+            cursor:pointer;
+        }
+        #points{
+            border: 1px solid black;
+            padding: 10px 8px;
+        }
+        #points>:nth-child(2)>:nth-child(1),:nth-child(2){
+          font-size: 12px;
+          color: rgb(53, 52, 52);
+          font-weight: bolder;
+        }
+        #points>:nth-child(2)>:nth-child(3){
+          font-size: 13px;
+          color: rgb(113, 110, 110);
+          /* font-weight: bolder; */
+          margin-bottom: 10px;
+        }
+        #points>:nth-child(2)>a{
+          text-decoration: none;
+          color: rgb(113, 110, 110);
+        }
+        #points>:nth-child(2)>p{
+          margin-bottom: -8px;
+        }
+        #purchase_summary{
+            background-color: #f2f2f2;
+            padding:16px 20px;
+        }
+        #purchase_summary>h2{
+            border-bottom: 1px solid rgb(131, 129, 129);
+            padding-bottom: 5px;
+        }
+        #cupon{
+            border-bottom: 1px solid rgb(131, 129, 129);
+            margin-top:-12px ;
+        }
+        #total~button{
+            
+            width: 100%;
+            margin-bottom: 8px;
+            border: none;
+           
+
+        }
+        #total+button{
+            background-color: #008fdb ;
+            font-size: 20px;
+            padding: 10px 30px;
+            color:white;
+           
+        }
+        #total+button:hover{
+            background-color: #2690c9 ;
+            cursor: pointer;
+           
+        }
+        #afterpay{
+            background-color: #b2fce4 ;
+            font-size: 16px;
+            color:black;
+            padding: 10px 20px;
+        }
+        #more{
+            background-color:white ;
+            padding: 10px 30px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="greatParent">
+        <h2 style="font-weight: lighter; padding-left: 35px;">YOUR BAG</h2>
+        <div id="parent">
+            
+            <!-- <div id="container_parent"> -->
+                <div id="container">
+    
+                </div>
+            <!-- </div> -->
+                <div >
+                    <div id="points">
+                        <div>
+                            <img  src="https://account.finishline.com/static/media/STATUS_logo_black.3c28c69a.svg" alt="">
+    
+                        </div>
+                        <div>
+                            <p>GET POINTS. GAIN ACCESS.</p>
+                            <p>BOOST YOUR STATUS</p>
+                            <p>Use your STATUS across our brand family, JD Sports and Finish Line.</p>
+                            <a href="#">Join STATUS Now</a>
+                        </div>
+                    </div>
+                    
+                    <div id="purchase_summary">
+                        <h2>Purchase Summary</h2>
+                        <div id="cupon">
+                            <p>Enter a cupon Code</p>
+                            <p>+</p>
+                        </div>
+                        <div id="subtotal">
+                            <p id="subtotalelem">Subtotal (1 item)</p>
+                            <p class="net">$125.00</p>
+                            <p>Estimated Shipping</p>
+                            <p>Free</p>
+                            <p>Tax</p>
+                            <p>TBD</p>
+                        </div>
+                        <div id="total">
+                            <p>Total:</p>
+                            <p id="totprice">$125</p>
+                        </div>
+                        <button>PROCEED TO CHECKOUT</button><br>
+                        <button id="afterpay">Pay now with afterpay</button><br>
+                        <button id="more">+ MORE PAYMENT OPTIONS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
+<script>
+    let sdiv=document.querySelector("#net")
+                console.log(sdiv);
+    BagData()
+
+    
+    async function BagData(){
+        try {
+            let res=await fetch("http://localhost:4500/get/cartdData/",{
+                method:"GET",
+                headers:{
+                    "Content-Type":"application/json",
+                    Authorization:localStorage.getItem("token")
+                }
+            });
+            if(res.ok){
+                let ans=await res.json();
+                console.log(ans);
+                display(ans)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    function display(data){
+        let main=document.querySelector("#container");
+        main.innerHTML=""
+        
+        main.innerHTML=data.map((item)=>{
+           let ans=
+            `
+        <div class="products_div" >
+            <div>
+                <img src=${item.image}>
+                </div>
+            <div>
+                <p> ${item.des}</p>
+                <P>Size: 9.0</p>
+                <p>color </p>
+                <p>Qualifies for free shoping</p>
+                </div>
+               <div class="qty">
+                <p class="minus" data-set=${item._id}>-</p>&nbsp 
+                <p class="append">qty &nbsp<span> 1</span></P>&nbsp 
+                <p class="plus">+</P>
+                </div>
+                <div>
+                    <p data-set=${item.price}>$ ${item.price}</p>
+                </div>
+                <div class="remove" data-set=${item._id}>
+                    Remove
+                    </div>
+            </div>
+            `
+            return ans
+        }).join(" ")
+
+        var minus=document.querySelectorAll(".minus");
+        for(let btn of minus){
+            let qtv;
+            let count=1;
+            btn.addEventListener("click",(e)=>{
+                qtv=e.target.nextElementSibling.firstElementChild.innerHTML
+                let value= e.target.parentElement.nextElementSibling.firstElementChild.innerHTML;
+               value= value.split(" ");
+               count++;
+               console.log(count);
+               let dolr=value[0];
+               let price=+value[1];
+               let new_price=price/qtv
+               new_price=price-new_price
+            //    console.log(dolr,price);
+            //    console.log(price);
+                qtv--;
+                console.log(typeof qtv);
+                let id=(e.target.dataset.set);
+                if(qtv==0){
+                    remove(id)
+                }else{
+        console.log(e);
+                  let subprice= document.getElementById("subtotalelem");
+                  subprice.innerHTML=`Subtotal (${qtv} item)`;
+                  console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
+                  e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1].innerHTML=`$ ${new_price}`
+                document.getElementById("totprice").innerText=`$ ${new_price}`;
+                console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
+                   e.target.nextElementSibling.firstElementChild.innerHTML=qtv;
+                    e.target.parentElement.nextElementSibling.firstElementChild.innerHTML=`$ ${new_price}`
+                }
+            })
+        }
+    var plus=document.querySelectorAll(".plus");
+        for(let btn of plus){
+            let qtv;
+            let count=1
+            console.log("object");
+            btn.addEventListener("click",(e)=>{
+                qtv=e.target.parentElement.children[1].firstElementChild.innerHTML
+                qtv++;
+                e.target.parentElement.children[1].firstElementChild.innerHTML=qtv
+                let new_value;
+                let value= e.target.parentElement.nextElementSibling.firstElementChild.innerHTML;
+               value= value.split(" ");
+            let orignial_price=(e.target.parentElement.nextElementSibling.firstElementChild.dataset.set);
+               orignial_price=+orignial_price;
+               console.log(orignial_price);
+            let price=+value[1];
+               change_price=price;
+               console.log(change_price);
+                 new_value=change_price;
+               e.target.parentElement.nextElementSibling.firstElementChild.innerHTML=`$ ${price+orignial_price}`;
+            //    console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.firstElementChild.children[0].nextElementSibling.children[2].children[1].innerHTML);
+                  console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
+            let subprice= document.getElementById("subtotalelem");
+                  subprice.innerHTML=`Subtotal (${qtv} item)`;
+                  e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1].innerHTML=`$ ${price+orignial_price}`
+                document.getElementById("totprice").innerText=`$ ${price+orignial_price}`;
+            })
+        }
+        var removebtn=document.querySelectorAll(".remove");
+        for(let btn of removebtn){
+            btn.addEventListener("click",(e)=>{
+                remove(e.target.dataset.set)
+            })
+        }
+    }
+    async function remove(id){
+        try {
+            let res=await fetch(`http://localhost:4500/delete/cartData/${id}`,{
+                method:"DELETE",
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            })
+        if(res.ok){
+            let ans=await res.json();
+            alert(ans.msg);
+            display(ans.data)
+        }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+</script>

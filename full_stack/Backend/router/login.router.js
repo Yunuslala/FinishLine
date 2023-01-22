@@ -41,7 +41,7 @@ loginRoute.post("/login",async(req,res)=>{
                     var name=registeredData[0].fname;
                     console.log(name,dataid);
                     var token=jwt.sign({dataid,name},'aquos');
-                    res.send({"msg":"You have been logged in",token})
+                    res.send({"msg":"You have been logged in",token,name})
                 }else{
                     console.log(err);
                     res.send({"msg":"wrong password please enter correct password"})

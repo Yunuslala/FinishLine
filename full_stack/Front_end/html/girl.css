@@ -1,0 +1,160 @@
+ *{
+     color:#333333;
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+#body_1{
+    display: flex;
+    /* border: 1px solid red; */
+}
+#h1_GIRLS{
+   margin-left: 330px; 
+   font-size: 12px;
+   height: 38px;
+   padding-top: 40px;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+img{
+    width: 100%;
+}
+#filter_sorting{
+    /* border: 1px solid rgb(45, 9, 203); */
+    width: 15%;
+    margin-left: 100px;
+    height: 20%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ 
+
+}
+#filter_sorting>p{
+    font-size: 13px;
+    height: 21px;
+    color: #333;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  margin-top: -8px;
+  
+}
+#img_append{
+    width: 80%;
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    height: 85%;
+    padding-top: 50px;
+  
+}
+#img_append>div{
+margin-left: 10px;
+width: 350px;
+}
+#img_append>div>img{
+margin-top: 10px;
+}
+#img_append>div>a{
+    /* border: 1px solid red; */
+    margin-top: -12px;
+    display: block;
+}
+#logo_png{
+    /* border: 1px solid red; */
+    width: 60%;
+    display: flex;
+    margin: auto;
+ 
+}#logo_png>img{
+  width: 80px;
+  text-align: center;
+  margin: auto;
+}
+#h3_brand{
+    /* border: 1px solid red; */
+    margin-left: 45%; 
+   
+ 
+}
+#TRENDING{
+    display: flex;
+    /* border: 1px solid red; */
+    width: 80%;
+    margin-left: 20%;
+}
+#TRENDING>div>img{
+ width: 70%;
+ margin: auto;
+
+}
+.s_img>img{
+height: 530px;
+width: 00px;
+/* border: 1px solid red; */
+}
+.s_img{
+    width: 500px;   
+    /* border: 1px solid red; */
+    margin: auto;
+}
+.Shop_all{
+    text-align: center;
+}
+.fashion_pic{
+    width: 70%;
+    margin: auto;
+    margin-right: 10%;
+
+
+}
+.fashion_pic>img{
+    height:  70% ;
+}
+#style_women_shoes{
+    display: flex;
+    width: 75%;
+    margin: auto;
+ 
+    /* border: 1px solid red; */
+    padding-left: 120px;
+}
+#style_women_shoes>div{
+margin: auto;
+}
+#style_women_shoes>div>img{
+   width: 240px;
+}
+#WOMEN’S_ACTIVEWEAR{
+    text-align: center;
+    /* border: 1px solid red; */
+    width: 75%;
+    margin: auto;  
+    font-size: 12px; 
+}
+#WOMEN’S_ACTIVEWEAR>h4{
+padding-right: 640px;
+}
+/* ----------boy--------------- */
+#KID-FOCUSED{
+    display: flex;
+    width: 75%;
+    padding-left: 300px;
+ 
+}
+#KID-FOCUSED{
+margin: auto;
+/* border: 1px solid red; */
+}
+/* -------------Man------------- */
+#TRENDING_OUTFITS{
+    display: flex;
+    margin: auto;
+    /* border: 1px solid red; */
+    width: 70%;
+    padding-left: 300px;
+
+}
+#TRENDING_OUTFITS>img{
+width: 550px;
+margin: auto;
+/* border: 1px solid red; */
+}
+#Brands_name{
+    text-align: center;
+}

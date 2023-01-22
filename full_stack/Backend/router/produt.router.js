@@ -58,7 +58,7 @@ productRoute.post("/women/clothes/",async(req,res)=>{
 productRoute.post("/boys/shoes/",async(req,res)=>{
     try {
         let obj=req.body;
-        let data=await ProductMenMOdel.find(obj);
+        let data=await ProductboysMOdel.find(obj);
         res.send(data);
     } catch (error) {
         console.log(error);
@@ -133,6 +133,93 @@ productRoute.get("/boys/clothes",async(req,res)=>{
             data.sort((a,b)=> a.price-b.price);
         }else if(req.query.sort=="desc"){
             var data=await ProductboysMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
+        };
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+productRoute.get("/boys/shoes",async(req,res)=>{
+    try {
+        if(req.query.sort=="asc"){
+            var data=await ProductboysMOdel.find();
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductboysMOdel.find();
+            data.sort((a,b)=> b.price-a.price);
+        };
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+productRoute.post("/boys/type/shoes",async(req,res)=>{
+    try {
+
+        if(req.query.sort=="asc"){
+
+            var data=await ProductboysMOdel.find(req.body);
+           
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductboysMOdel.find(req.body);
+            data.sort((a,b)=> b.price-a.price);
+        };
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+productRoute.post("/girls/type/shoes",async(req,res)=>{
+    try {
+
+        if(req.query.sort=="asc"){
+
+            var data=await ProductgirlMOdel.find(req.body);
+           
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductgirlMOdel.find(req.body);
+            data.sort((a,b)=> b.price-a.price);
+        };
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+productRoute.post("/men/type/shoes",async(req,res)=>{
+    try {
+
+        if(req.query.sort=="asc"){
+
+            var data=await ProductMenMOdel.find(req.body);
+           
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductMenMOdel.find(req.body);
+            data.sort((a,b)=> b.price-a.price);
+        };
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.send({"msg":"something went wrong"})
+    }
+});
+productRoute.post("/women/type/shoes",async(req,res)=>{
+    try {
+
+        if(req.query.sort=="asc"){
+
+            var data=await ProductWomenMOdel.find(req.body);
+           
+            data.sort((a,b)=> a.price-b.price);
+        }else if(req.query.sort=="desc"){
+            var data=await ProductWomenMOdel.find(req.body);
             data.sort((a,b)=> b.price-a.price);
         };
         res.send(data)
@@ -263,7 +350,8 @@ productRoute.delete("/delete/cartData/:id",async(req,res)=>{
         let id=req.params.id;
         
         await CartModel.findByIdAndDelete({_id:id});
-        res.send({"msg":"Your item has been removed  to bag"})
+        let data=await CartModel.find()
+        res.send({"msg":"Your item has been removed  to bag",data})
     } catch (error) {
         console.log(error);
         res.send({"msg":"something went wrong"})
