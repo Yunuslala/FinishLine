@@ -783,9 +783,10 @@
     }
   document.getElementById("checkout").addEventListener("click",(e)=>{
     let token=localStorage.getItem("usertoken");
+    console.log(token);
     if(token){
         window.location.href="../paymentandCheckout/SECURE_CHECKOUT.html"
-    }else{
+    }else if(token==undefined){
         alert("You have not sign up yet");
         window.location.href="../signup.html"
     }
@@ -858,8 +859,6 @@
                let price=+value[1];
                let new_price=price/qtv
                new_price=price-new_price
-            //    console.log(dolr,price);
-            //    console.log(price);
                 qtv--;
                 console.log(typeof qtv);
                 let id=(e.target.dataset.set);
@@ -871,7 +870,8 @@
                   subprice.innerHTML=`Subtotal (${qtv} item)`;
                   console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
                   e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1].innerHTML=`$ ${new_price}`
-                document.getElementById("totprice").innerText=`$ ${new_price}`;
+               localStorage.setItem("price",JSON.stringify(new_price))
+                  document.getElementById("totprice").innerText=`$ ${new_price}`;
                 console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
                    e.target.nextElementSibling.firstElementChild.innerHTML=qtv;
                     e.target.parentElement.nextElementSibling.firstElementChild.innerHTML=`$ ${new_price}`
@@ -903,7 +903,8 @@
             let subprice= document.getElementById("subtotalelem");
                   subprice.innerHTML=`Subtotal (${qtv} item)`;
                   e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1].innerHTML=`$ ${price+orignial_price}`
-                document.getElementById("totprice").innerText=`$ ${price+orignial_price}`;
+               localStorage.setItem("price",JSON.stringify(price+orignial_price));
+                  document.getElementById("totprice").innerText=`$ ${price+orignial_price}`;
             })
         }
         var removebtn=document.querySelectorAll(".remove");

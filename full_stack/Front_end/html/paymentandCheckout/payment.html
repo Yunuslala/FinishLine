@@ -39,7 +39,7 @@
                    <p>Billing and shipping address are the same</p>
                 </div>
             </div>
-            <button id="placed">Place Order</button>
+            <button onclick="placed()" id="placed">Place Order</button>
         </div>
    
     <div id="summary">
@@ -58,16 +58,19 @@
                         </div>
                         <div id="total">
                             <p>Total</p>
-                            <p>$125.00</p>
+                            <p id="price">$125.00</p>
                         </div>
     </div>
 </div>
 </body>
 </html>
-<a href="../index.html"></a>
+<a href="../finish line - Copy - Copy/index.html"></a>
 <script>
-document.getElementById("#placed").addEventListener("click",()=>{
-    let cardnum=document.getElementById("#cardnum").value;
+    let price=JSON.parse(localStorage.getItem("price"));
+    document.querySelector("#price").innerHTML=`$ ${price}`;
+    document.querySelector(".net").innerHTML=`$ ${price}`;
+function placed(){
+    // let cardnum=document.getElementById("#cardnum").value;
     let month=document.getElementById("month").value;
     let year=document.getElementById("year").value;
     let cvv=document.getElementById("cvv").value;
@@ -75,7 +78,7 @@ document.getElementById("#placed").addEventListener("click",()=>{
         alert("Please Fill all the details")
     }else{
         alert("you have successfully purchased")
-        window.location.href="../index.html"
+        window.location.href="../finish line - Copy - Copy/index.html"
     }
-})
+}
 </script>

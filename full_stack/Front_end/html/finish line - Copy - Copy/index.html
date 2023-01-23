@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="./Style/style.css">
     <link rel="stylesheet" href="./Style/navbar.css">
     <link rel="stylesheet" href="./Style/home.css">
@@ -41,13 +41,13 @@
                                 <i class="fa-solid fa-user"></i>
                                 Account
                                 <div id="signupdrop">
-                                    <a href="../html/signup.html">Sign in</a>
-                                    <a href="../html/login.html">login</a>
+                                    <a href="../signup.html">Sign in</a>
+                                    <a href="../login.html">login</a>
                                     <a href="#">staus</a>
                                     <a href="#">favourite</a>
                                 </div>
                             </td>
-                            <td>
+                            <td onclick="cart()">
                                 <i class="fa-solid fa-bag-shopping"></i>
                                 Bag
                             </td>
@@ -954,8 +954,11 @@
             Site Map</p>
             <div><p id="table_last_end">Exercise My Rights</p></div>
         
-
+<a href="../productpages/cartPage.html"></a>
     <script>
+        function cart(){
+            window.location.href="../productpages/cartPage.html"
+        }
         let slideIndex = 1;
         showSlides(slideIndex);
 
