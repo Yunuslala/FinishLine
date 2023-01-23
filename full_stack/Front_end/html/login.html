@@ -30,7 +30,7 @@
             <input type="text" placeholder="User Login" id="submit">
         </form>
     </div>
-    <a href="../admin/adminProductPage.html"></a>
+    <a href="../html/finish line - Copy - Copy/index.html"></a>
 
 </body>
 </html>
@@ -63,10 +63,11 @@
                 if(ans.name=="admin"){
                     alert("welcome admin You have been login");
                     window.location="../admin/adminProductPage.html"
+                    localStorage.setItem("token",ans.token);
                 }else{
                     alert(ans.msg);
                     localStorage.setItem("usertoken",ans.token);
-                    window.location.href="../html/index.html"
+                    window.location.href="../html/finish line - Copy - Copy/index.html"
                 }
             }
         } catch (error) {

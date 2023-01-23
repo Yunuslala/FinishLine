@@ -51,6 +51,7 @@ a{
     border: 1px solid black;
     transition:all 1.3sec ease;
     position: fixed;
+    z-index: 9999;
 
 } 
 /* #drop_links ul li :hover .bannerContainer,
