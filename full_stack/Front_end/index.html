@@ -29,7 +29,7 @@
                 <div class="menu">
                     <table>
                         <tr>
-                            <td>
+                            <td id="FullSearching">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <input type="text" placeholder="Search">
                             </td>
@@ -955,39 +955,9 @@
             Site Map</p>
             <div><p id="table_last_end">Exercise My Rights</p></div>
         
-<!-- <a href="./html/productpages/cartPage.html"></a> -->
-    <script>
-        function cart(){
-            window.location.href="./html/productpages/cartPage.html"
-        }
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-    </script>
+<!-- <a href="./html/productpages/searching.html"></a> -->
 
 </body>
 
 </html>
+<script src="./index.js"></script>

@@ -2,9 +2,13 @@ const express=require("express");
 const{connection}=require("./db");
 const {productRoute}=require("./router/produt.router");
 const {admin}=require("./router/admin.router");
-const {loginRoute}=require("./router/login.router")
+const {loginRoute}=require("./router/login.router");
+const {searchingRouter}=require("./router/Searching.router")
+const cors=require("cors");
 const app=express();
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
+app.use(searchingRouter);
 app.use(loginRoute)
 app.use(productRoute);
 app.use(admin)
