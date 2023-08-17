@@ -12,5 +12,5 @@ const adminAuthentication=(req,res,next)=>{
     }
 };
 module.exports={
-    adminAuthentication
+    // adminAuthentication
 }

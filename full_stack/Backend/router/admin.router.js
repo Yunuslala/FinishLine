@@ -10,7 +10,7 @@ const {loginModel}=require("../models/login.model");
 // const {men,Women,girls,boys}=require("../json");
 const cors=require('cors')
 admin.use(cors())
-admin.use(adminAuthentication);
+// admin.use(adminAuthentication);
 
 admin.get("/user",async(req,res)=>{
     try {
