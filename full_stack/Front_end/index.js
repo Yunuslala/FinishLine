@@ -32,11 +32,13 @@ const searching=document.querySelector("#FullSearching");
 searching.addEventListener("change",async(e)=>{
     try {
         console.log("searching",e.target.value);
-        window.location.href="./html/productpages/searching.html";
         const response=await fetch(`http://localhost:4500/get/algolia?q=${e.target.value}`);
         if(response.ok){
             const data=await response.json();
-            appendProducts(data)
+            localStorage.setItem("searchData",JSON.stringify(data))
+            // appendProducts(data)
+        window.location.href="./html/productpages/searching.html";
+
         }
         
     } catch (error) {
@@ -82,3 +84,4 @@ function appendProducts(data){
     })
   }
 }
+
