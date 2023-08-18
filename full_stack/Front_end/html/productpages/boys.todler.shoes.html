@@ -582,7 +582,7 @@
         let value=select.value;
         console.log(value);
         try {
-            let res=await fetch(`http://localhost:4500/boys/type/shoes?sort=${value}`,{
+            let res=await fetch(`https://commerce-app-ijwm.onrender.com/boys/type/shoes?sort=${value}`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -603,7 +603,7 @@
     fetchProductsdata()
     async function fetchProductsdata(){
         try {
-            let res=await fetch("http://localhost:4500/boys/shoes/",{
+            let res=await fetch("https://commerce-app-ijwm.onrender.com/boys/shoes/",{
                 method:"POST",
                     headers:{
                 "Content-Type":"application/json",
@@ -656,7 +656,7 @@
     }
     async function  addBag(data_id){
         try {
-            let  res=await fetch("http://localhost:4500/add/cart/boys",{
+            let  res=await fetch("https://commerce-app-ijwm.onrender.com/add/cart/boys",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

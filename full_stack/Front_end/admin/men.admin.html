@@ -638,7 +638,7 @@ let select=document.querySelector("#sort");
  
 async function sortprice(value){
   try {
-    let ans=await fetch(`http://localhost:4500/women/sort/price/?sort=${value}`,{
+    let ans=await fetch(`https://commerce-app-ijwm.onrender.com/women/sort/price/?sort=${value}`,{
       method:"GET",
       headers:{
         "Content-Type":"application/json",
@@ -655,7 +655,7 @@ async function sortprice(value){
 
  async function sorting(data){
 try {
-  let res=await fetch("http://localhost:4500/men/sort",{
+  let res=await fetch("https://commerce-app-ijwm.onrender.com/men/sort",{
     method:"POST",
     headers:{
       "Content-Type":"application/json",
@@ -711,7 +711,7 @@ try {
 
      async function addingData(obj){
       try {
-        let res=await fetch("http://localhost:4500/post/add/Men",{
+        let res=await fetch("https://commerce-app-ijwm.onrender.com/post/add/Men",{
           method:"POST",
           headers:{
             "Content-Type":"application/json",
@@ -730,7 +730,7 @@ try {
      }
     async function admin(){
         try {
-            let res=await fetch("http://localhost:4500/get/men",{
+            let res=await fetch("https://commerce-app-ijwm.onrender.com/get/men",{
               method:"GET",
               headers:{
                 "Content-Type":"application/json",
@@ -792,7 +792,7 @@ function display(data){
   }
   async function delete_product(id){
     try {
-      let res=await fetch(`http://localhost:4500/delete/men/${id}`,{
+      let res=await fetch(`https://commerce-app-ijwm.onrender.com/delete/men/${id}`,{
         method:"DELETE",
         headers:{
           "Content-Type":"application-json",

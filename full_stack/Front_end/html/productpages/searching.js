@@ -3,7 +3,7 @@ let againSearch=document.querySelector(".FullSearchingAgain");
 againSearch.addEventListener("change",async(e)=>{
     try {
         console.log("object",e.target.value);
-        const response=await fetch(`http://localhost:4500/get/algolia?q=${e.target.value}`);
+        const response=await fetch(`https://commerce-app-ijwm.onrender.com/get/algolia?q=${e.target.value}`);
         if(response.ok){
             const data=await response.json();
             appendProducts(data)

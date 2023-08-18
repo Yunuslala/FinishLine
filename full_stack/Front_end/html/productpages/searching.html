@@ -572,7 +572,7 @@
 againSearch.addEventListener("change",async(e)=>{
     try {
         console.log("object",e.target.value);
-        const response=await fetch(`http://localhost:4500/get/algolia?q=${e.target.value}`);
+        const response=await fetch(`https://commerce-app-ijwm.onrender.com/get/algolia?q=${e.target.value}`);
         if(response.ok){
             const data=await response.json();
             appendProducts(data)
@@ -663,7 +663,7 @@ function appendProducts(data){
 
 async function  addBag(data_id){
     try {
-        let  res=await fetch("http://localhost:4500/add/cart/men",{
+        let  res=await fetch("https://commerce-app-ijwm.onrender.com/add/cart/men",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

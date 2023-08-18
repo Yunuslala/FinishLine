@@ -44,7 +44,7 @@
 <script>
     async function userpage(){
         try {
-            let res=await fetch("http://localhost:4500/user",{
+            let res=await fetch("https://commerce-app-ijwm.onrender.com/user",{
                 method:"GET",
                 headers:{
       "Content-Type":"application/json",
@@ -89,7 +89,7 @@
 console.log(localStorage.getItem("token"));
     async function remove(id){
         try {
-            let ans=await fetch(`http://localhost:4500/user/delete/${id}`,{
+            let ans=await fetch(`https://commerce-app-ijwm.onrender.com/user/delete/${id}`,{
                 method:"DELETE",
                 headers:{
       "Content-Type":"application/json",

@@ -799,7 +799,7 @@
     
     async function BagData(){
         try {
-            let res=await fetch("http://localhost:4500/get/cartdData/",{
+            let res=await fetch("https://commerce-app-ijwm.onrender.com/get/cartdData/",{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -919,7 +919,7 @@
     }
     async function remove(id){
         try {
-            let res=await fetch(`http://localhost:4500/delete/cartData/${id}`,{
+            let res=await fetch(`https://commerce-app-ijwm.onrender.com/delete/cartData/${id}`,{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json"

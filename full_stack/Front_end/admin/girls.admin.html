@@ -644,7 +644,7 @@
 <script>
   async function admin(){
         try {
-            let res=await fetch("http://localhost:4500/get/girl",{
+            let res=await fetch("https://commerce-app-ijwm.onrender.com/get/girl",{
               method:"GET",
               headers:{
                 "Content-Type":"application/json",
@@ -706,7 +706,7 @@ function display(data){
   }
   async function delete_product(id){
     try {
-      let res=await fetch(`http://localhost:4500/delete/girls/${id}`,{
+      let res=await fetch(`https://commerce-app-ijwm.onrender.com/delete/girls/${id}`,{
         method:"DELETE",
         headers:{
           "Content-Type":"application-json",
