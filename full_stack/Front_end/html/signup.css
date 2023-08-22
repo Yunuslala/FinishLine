@@ -60,4 +60,25 @@ form>input{
 #submit:hover{
     background-color: #103f3d;
     color: #000000;
+    cursor: pointer;
+}
+
+#loginFunc{
+    width: 50%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: -60px;
+}
+
+#loginFunc>a :hover{
+  cursor: pointer;
+    
+}
+
+#loginFunc>a{
+    font-size: 20px;
+    padding-left: 10px;
+
 }

@@ -818,8 +818,9 @@
     function display(data){
         let main=document.querySelector("#container");
         main.innerHTML=""
-        
+        let totalPrice=0;
         main.innerHTML=data.map((item)=>{
+            totalPrice+=Number(item.price);
            let ans=
             `
         <div class="products_div" >
@@ -847,7 +848,9 @@
             `
             return ans
         }).join(" ")
-
+        console.log("object",totalPrice);
+        document.getElementById("totprice").innerText=`${totalPrice}`
+        localStorage.setItem("totalPriceof",JSON.stringify(totalPrice))
         var minus=document.querySelectorAll(".minus");
         for(let btn of minus){
             let qtv;
@@ -855,6 +858,8 @@
             btn.addEventListener("click",(e)=>{
                 qtv=e.target.nextElementSibling.firstElementChild.innerHTML
                 let value= e.target.parentElement.nextElementSibling.firstElementChild.innerHTML;
+                let orignial_price=(e.target.parentElement.nextElementSibling.firstElementChild.dataset.set);
+               orignial_price=+orignial_price;
                value= value.split(" ");
                count++;
                console.log(count);
@@ -863,7 +868,9 @@
                let new_price=price/qtv
                new_price=price-new_price
                 qtv--;
-                console.log(typeof qtv);
+                console.log("price",price);
+                console.log("new_price",new_price);
+                console.log("originalprice",orignial_price);
                 let id=(e.target.dataset.set);
                 if(qtv==0){
                     remove(id)
@@ -873,8 +880,12 @@
                   subprice.innerHTML=`Subtotal (${qtv} item)`;
                   console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
                   e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1].innerHTML=`$ ${new_price}`;
-               localStorage.setItem("price",JSON.stringify(new_price))
-                  document.getElementById("totprice").innerText=`$ ${new_price}`;
+
+               localStorage.setItem("price",JSON.stringify(new_price));
+               let totalPriceofAll=JSON.parse(localStorage.getItem("totalPriceof"));
+               totalPriceofAll=+totalPriceofAll;
+               localStorage.setItem("totalPriceof",JSON.stringify(totalPriceofAll-orignial_price));
+                  document.getElementById("totprice").innerText=`$ ${JSON.parse(localStorage.getItem("totalPriceof"))}`;
                 console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
                    e.target.nextElementSibling.firstElementChild.innerHTML=qtv;
                     e.target.parentElement.nextElementSibling.firstElementChild.innerHTML=`$ ${new_price}`
@@ -905,9 +916,13 @@
                   console.log(e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1]);
             let subprice= document.getElementById("subtotalelem");
                   subprice.innerHTML=`Subtotal (${qtv} item)`;
+
+                  let totalPriceofAll=JSON.parse(localStorage.getItem("totalPriceof"));
+               totalPriceofAll=+totalPriceofAll;
+               localStorage.setItem("totalPriceof",JSON.stringify(totalPriceofAll+orignial_price));
                   e.target.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[2].children[1].innerHTML=`$ ${price+orignial_price}`
                localStorage.setItem("price",JSON.stringify(price+orignial_price));
-                  document.getElementById("totprice").innerText=`$ ${price+orignial_price}`;
+                  document.getElementById("totprice").innerText=`$ ${JSON.parse(localStorage.getItem("totalPriceof"))}`;
             })
         }
         var removebtn=document.querySelectorAll(".remove");
